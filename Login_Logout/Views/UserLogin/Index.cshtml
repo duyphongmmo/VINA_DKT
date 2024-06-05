@@ -1,0 +1,120 @@
+﻿@model Login_Logout.Models.LoginModelClass
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Login DKT VINA</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!--===============================================================================================-->
+    <link rel="icon" type="image/png" href="~/AssetsLogin/Login/images/icons/favicon.ico" />
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="~/AssetsLogin/Login/vendor/bootstrap/css/bootstrap.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="~/AssetsLogin/Login/fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="~/AssetsLogin/Login/vendor/animate/animate.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="~/AssetsLogin/Login/vendor/css-hamburgers/hamburgers.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="~/AssetsLogin/Login/vendor/select2/select2.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="~/AssetsLogin/Login/css/util.css">
+    <link rel="stylesheet" type="text/css" href="~/AssetsLogin/Login/css/main.css">
+    <link href="~/Assets/StyleSheet1.css" rel="stylesheet" />
+    <!--===============================================================================================-->
+</head>
+<body>
+    <div class="limiter">
+        <div class="container-login100" style="background-image: url('../../AssetsLogin/Login/images/dkt_new.PNG'); background-size: cover; background-position: center center; 
+background-repeat: no-repeat; position: fixed; top: 0; left: 0; width: 100%; height: 100%; text-align: center;">
+            @* <div class="container-login100" style="background-image: url('../../AssetsLogin/Login/images/IMG_0284.jpg'); background-size:cover;text-align:center">*@
+            <div class="wrap-login100" style="background: #faf8f900">
+                <div class="login100-pic js-tilt" data-tilt>
+                    <img src="~/AssetsLogin/Login/images/logo.png" alt="IMG">
+                </div>
+                
+                @using (Html.BeginForm())
+                {
+                    @Html.AntiForgeryToken()
+                    <div class="login100-form validate-form">
+                        <span class="login100-form-title">
+                            <b style="font-size: 28px; margin: 0; font-weight: bold; text-transform: uppercase; color: #0b396a">
+                                QUẢN LÝ CHẤM CÔNG
+                            </b>
+
+                        </span>
+                        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                        <div class="wrap-input100 validate-input">
+                            @Html.TextBoxFor(model => model.UserCode, new { @class = "input100", @type = "text", @placeholder = "Mã Nhân Viên" })
+                            @Html.ValidationMessageFor(model => model.UserCode, "", new { @class = "text-danger" })
+                            <span class="focus-input100"></span>
+                            <span class="symbol-input100">
+                                <i class="fa fa-envelope" aria-hidden="true"></i>
+                            </span>
+                        </div>
+                        <div class="wrap-input100 validate-input" data-validate="Password is required">
+                            @Html.TextBoxFor(model => model.PassWord, new { @class = "input100", @type = "password", @placeholder = "Mật khẩu", @typeof = "password" })
+                            @Html.ValidationMessageFor(model => model.PassWord, "", new { @class = "text-danger" })
+                            <span class="focus-input100"></span>
+                            <span class="symbol-input100">
+                                <i class="fa fa-lock" aria-hidden="true"></i>
+                            </span>
+                        </div>
+                        <div class="container-login100-form-btn">
+                            <button type="submit" class="login100-form-btn" style="background:#146b27">
+                                Login
+                            </button>
+                        </div>
+
+                        <div class="text-center p-t-12">
+                            <span class="txt1">
+
+                            </span>
+                            <a class="txt2" href="#">
+
+                            </a>
+                        </div>
+
+                        <div class="text-center p-t-136">
+                            <a class="txt2" href="#">
+                            </a>
+                        </div>
+
+                    </div>
+                }
+
+            </div>
+        </div>
+            @{
+                if (TempData["msg"] != null)
+                {
+                    <script type="text/javascript">
+                    alert('@TempData["msg"]');
+                    </script>
+                }
+            }
+        </div>
+        <!--===============================================================================================-->
+        <script src="~/AssetsLogin/Login/vendor/jquery/jquery-3.2.1.min.js"></script>
+        <!--===============================================================================================-->
+        <script src="~/AssetsLogin/Login/vendor/bootstrap/js/popper.js"></script>
+        <script src="~/AssetsLogin/Login/vendor/bootstrap/js/bootstrap.min.js"></script>
+        <!--===============================================================================================-->
+        <script src="~/AssetsLogin/Login/vendor/select2/select2.min.js"></script>
+        <!--===============================================================================================-->
+        <script src="~/AssetsLogin/Login/vendor/tilt/tilt.jquery.min.js"></script>
+        <script>
+            $('.js-tilt').tilt({
+                scale: 1.1
+            })
+        </script>
+        <!--===============================================================================================-->
+        <script src="~/AssetsLogin/Login/js/main.js"></script>
+
+</body>
+</html>

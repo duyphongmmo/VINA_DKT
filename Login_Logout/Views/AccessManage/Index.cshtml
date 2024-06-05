@@ -1,0 +1,309 @@
+﻿@using Login_Logout.Models;
+@{
+    ViewBag.Title = "Quản lý ra vào";
+    Layout = "~/Views/Shared/_LayoutAccessManage.cshtml";
+
+    List<DutyModel> list = ViewBag.listData as List<DutyModel> ?? new List<DutyModel>();
+    HrmPerson uif = ViewBag.userif as HrmPerson;
+    DutyCount count = ViewBag.total as DutyCount;
+
+    string type = Request.QueryString["type"];
+    var uid = Request.QueryString["uid"];
+    var search = Request.QueryString["s"];
+    string date = string.IsNullOrEmpty(Request.QueryString["date"]) ? DateTime.Now.ToString("yyyy-MM-dd") : Request.QueryString["date"];
+}
+
+@section styles {
+    <style>
+    </style>
+}
+
+<section class="card shadow py-1 px-2 ">
+    <div class="d-flex flex-row justify-content-between">
+        <div class="px-2 d-center">
+            <i class="fas fa-angle-double-right fa-sm"></i>
+            <span class="text-breadcrumb text-gradient space-grotesk">Quản lý nhân viên ra vào : <span class="time-now"></span> </span>
+        </div>
+        <!--Left-->
+        <div class="d-flex space-grotesk card-total">
+            <div class="card-total-b" style="border-left: 2px solid #f46a44d9;">
+                <p>Đang chờ</p>
+                <div class="d-flex align-items-md-center">
+                    <i class="fas fa-user-clock fa-sm float-left" style="color: #f46a44d9;"></i>
+                    <span style="padding-left: 20px; color: #f46a44d9;">@count.NOT_CONFIRM</span>
+                </div>
+            </div>
+            <div class="card-total-b" style="border-left: 2px solid #78c6ae;">
+                <p>Đã duyệt</p>
+                <div class="d-flex align-items-md-center">
+                    <i class="fas fa-user-check fa-sm float-left" style="color: #78c6ae"></i>
+                    <span style="padding-left: 20px; color: #78c6ae">@count.CONFIRMED</span>
+                </div>
+            </div>
+            <div class="card-total-b" style="border-left: 2px solid #4a94c0;">
+                <p>Tổng cộng</p>
+                <div class="d-flex align-items-md-center">
+                    <i class="fas fa-users fa-sm float-left" style="color: #4a94c0"></i>
+                    <span style="padding-left: 20px; color: #4a94c0;">@count.Total</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- List -->
+<div class="card mt-2">
+    <section class="px-3 py-2 section-list">
+        @* Search *@
+        <div class="d-flex align-items-center">
+            @using (Html.BeginForm("Index", "AccessManage", FormMethod.Get))
+            {
+                <div class="py-2 d-flex" style="gap:20px">
+                    @*<select aria-labelledby="state" class="custom-select" id="selectType" name="type" style="width:160px">
+                            <option @(type == null || type == "all" ? "selected" : "") value="all">All</option>
+                            <option @(type == "back" ? "selected" : "") value="back">Xin về</option>
+                            <option @(type == "out" ? "selected" : "") value="out">Xin ra ngoài</option>
+                        </select>*@
+                    <div>
+                        <div class="input-group date" style="width:150px">
+                            <input name="date" type="text" class="form-control" value="@date">
+                            <span class="input-group-addon rounded-right" style="padding: 6px; background-color: #eee; border: 1px solid #ccc; ">
+                                <i class="fas fa-calendar-alt"></i>
+                            </span>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="input-group">
+                            <input type="text" name="s" class="form-control input-search" value="@search" aria-label="Text input">
+                            <div class="input-group-append">
+                                <button type="submit" class="btn btn-outline-secondary btn-s">
+                                    <i class="fas fa-search fa-lg"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    @*<input hidden name="uid" value="@uid"/>*@
+                </div>
+            }
+            <div style="padding-left:20px">
+                <button type="button" class="btn btn-primary btn-sm" style="background-color: var(--bs-blue)"
+                        data-toggle="tooltip" data-placement="left" title="Tooltip on left"
+                        onclick="location.href='@Request.Url.AbsolutePath'">
+                    <i class="fas fa-sync-alt"></i>
+                </button>
+            </div>
+        </div>
+
+        @* table *@
+        <div style="overflow-x:auto">
+            <table class="table tb-data" style="min-width:800px">
+                <thead>
+                    <tr>
+                        <th style="padding:16px 0;" scope="col">STT</th>
+                        <th scope="col">Mã nhân viên</th>
+                        <th scope="col">Họ tên</th>
+                        <th scope="col">Bộ phận</th>
+                        @*<th scope="col">Loại:</th>*@
+                        <th scope="col">Ngày đăng ký</th>
+                        @* <th scope="col">Thời gian</th>*@
+                        <th scope="col">Lý do</th>
+                        <th scope="col">Trạng thái</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @{
+                        int idx = 1;
+                        foreach (var itl in list)
+                        {
+                            <tr class="it-listuser @(itl.DUTY_PERIOD_ID + "" == uid ? "active" : "")" data-duty-id="@itl.DUTY_PERIOD_ID" style="user-select:none">
+                                <td class="td-hover" scope="row">@(idx++)</td>
+                                <td class="td-hover">@itl.PERSON_NUM</td>
+                                <td class="td-hover">@itl.PERSON_NAME</td>
+                                <td class="td-hover">@itl.DEPT_NAME</td>
+                                @*<td class="td-hover">@itl.DUTY_NAME</td>*@
+                                <td class="td-hover">@(itl.END_DATE.ToString("yyyy/MM/dd"))</td>
+                                @*<td class="td-hover">@itl.START_TIME  - @itl.END_TIME</td>*@
+                                <td class="td-hover" style="text-align:left;">@itl.DESCRIPTION</td>
+                                <td>
+                                    @if (itl.Confirmed)
+                                    {
+                                        <span class="badge-status badge-complete space-grotesk">Đã duyệt</span>
+                                    }
+                                    else
+                                    {
+                                        <span class="badge-status badge-pending space-grotesk">Đang chờ</span>
+                                    }
+                                </td>
+                            </tr>
+                        }
+                        if (list.Count == 0)
+                        {
+                            <tr style="height:500px"></tr>
+                        }
+                    }
+                </tbody>
+            </table>
+        </div>
+    </section>
+</div>
+
+
+<!--  Info -->
+@if (!string.IsNullOrEmpty(uid))
+{
+    <div class="card shadow ac-content mt-2">
+        <div class="ac-card">
+            <section class="" style="gap:100px">
+                <div class="d-flex flex-wrap flex-row justify-content-between pb-4" style="gap:40px;">
+                    <!--Avatar-->
+                    <div class="d-center flex-column" style="text-align:center;padding:10px;width:250px;flex:1 1 auto;">
+                        <div class="card" style="width:320px;">
+                            <div class="card-header">
+                                <span>@uif.NAME</span>
+                            </div>
+                            <div class="card-body p-2">
+                                <div style="overflow:hidden;border-radius:50%;">
+                                    <img class="card-img-top" alt="avatar" src="~/Assets/img/default-user.svg"
+                                         onerror="this.src='/Assets/img/default-user.svg';this.onerror='';"
+                                         data-holder-rendered="true">
+                                </div>
+                            </div>
+                            <div style="height: 50px;padding-top:3rem;"
+                                 class="d-flex align-items-md-center justify-content-center space-grotesk">
+                                @if (uif.Confirmed)
+                                {
+                                    <button type="button" class="btn btn-light" style="width: 150px; background-color: #d7d7d7;">Đã duyệt</button>
+                                }
+                                else
+                                {
+                                    <button type="button" data-duty-id="@uif.DUTY_PERIOD_ID" class="btn btn-primary btn-confirm" style="width: 150px;">Duyệt</button>
+                                }
+
+                            </div>
+                        </div>
+                    </div>
+                    <!-- User Info-->
+                    <div class="ac-detail-if table-shadow" style="padding:10px;min-width:600px;flex:3 1 auto;">
+                        <table class="ac-table">
+                            <tr>
+                                <th colspan="2" class="text-center ac-title p-2 space-grotesk">
+                                    <i class="fas fa-info" style="font-size:18px;padding:10px;"></i>
+                                    Thông tin
+                                </th>
+                            </tr>
+                            <tr>
+                                <td>Tên</td>
+                                <td>@uif.NAME</td>
+                            </tr>
+                            <tr>
+                                <td>Mã nhân viên</td>
+                                <td>@uif.PERSON_NUM</td>
+                            </tr>
+                            <tr>
+                                <td>Bộ phận</td>
+                                <td>@uif.DEPT_NAME</td>
+                            </tr>
+                            <tr>
+                                <td>Loại</td>
+                                <td>@uif.DUTY_NAME</td>
+                            </tr>
+                            <tr>
+                                <td>Ngày đăng ký</td>
+                                <td>@(uif.END_DATE?.ToString("MM/dd/yyyy"))</td>
+                            </tr>
+                            <tr>
+                                <td>Thời gian</td>
+                                <td>@(uif.StartDateStr) - @(uif.EndDateStr)</td>
+                            </tr>
+                            <tr>
+                                <td>Số điện thoại</td>
+                                <td>@(uif.TELEPHON_NO ?? uif.HP_PHONE_NO)</td>
+                            </tr>
+                            <tr>
+                                <td>Lý do</td>
+                                <td>@uif.DESCRIPTION</td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+}
+<!--Popup-->
+<div class="modal fade" id="popup-confirm" tabindex="-1" aria-labelledby="popup-confirm" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Xác nhận duyệt</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal"><i class="fas fa-window-close fa-sm"></i></button>
+                <button type="button" class="btn btn-primary confirm-y"><i class="fas fa-save fa-sm"></i></button>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section scripts {
+    <script src="https://cdn.jsdelivr.net/npm/moment@2.30.1/moment.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+
+            $(".btn-s").on("click", function () {
+                localStorage.setItem('scrollPosition', $(window).scrollTop());
+            });
+
+            $('.input-group.date').datepicker({
+                format: 'yyyy-mm-dd',
+                todayBtn: "linked",
+                autoclose: true,
+                todayHighlight: true,
+                language: "vi"
+            });
+        });
+        //$('.time-now').text(moment().format('DD/MM/yyyy'));
+        //var d = new Date('@DateTime.Now')
+        // console.log(moment(d).format('DD/MM/yyyy'))
+
+        $(".it-listuser").on("click", function () {
+            var dataId = $(this).data("duty-id");
+
+            var currentUrl = window.location.href;
+            const url = new URL(currentUrl);
+            url.searchParams.set('uid', "" + dataId)
+            window.location.href = url.toString();
+        });
+
+        $(".btn-confirm").on("click", function () {
+            var dutyID = $(this).data("duty-id");
+
+            $('#popup-confirm').modal('show')
+
+            $("#popup-confirm .confirm-y").on("click", function () {
+                $.ajax({
+                    url: "/AccessManage/ConfirmDuty",
+                    method: "POST",
+                    data: {
+                        dutyID
+                    },
+                    success: function (response) {
+                        $('#popup-confirm').modal('hide')
+                        window.location.reload();
+                    },
+                    error: function (xhr, status, error) {
+                        console.error("Error:", error);
+                    }
+                });
+            })
+
+        });
+
+
+    </script>
+
+    <script type="text/javascript" src="~/Assets/AccessMange/js/acscript.js"></script>
+}

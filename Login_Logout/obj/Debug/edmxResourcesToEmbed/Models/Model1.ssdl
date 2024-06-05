@@ -1,0 +1,59 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Model.Store" Provider="Oracle.ManagedDataAccess.Client" ProviderManifestToken="11.2" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="TC_COMMON">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="number" Precision="38" Scale="0" Nullable="false" />
+    <Property Name="CODE" Type="varchar2" MaxLength="30" />
+    <Property Name="NAME" Type="varchar2" MaxLength="60" />
+    <Property Name="PARENT_ID" Type="number" Precision="38" Scale="0" />
+    <Property Name="REMARK" Type="varchar2" MaxLength="4000" />
+    <Property Name="SORT_INDEX" Type="number" Precision="38" Scale="0" />
+    <Property Name="USE_YN" Type="char" MaxLength="1" />
+    <Property Name="DEFAULT_YN" Type="char" MaxLength="1" />
+    <Property Name="USER_DEFINE" Type="varchar2" MaxLength="4000" />
+    <Property Name="INSERT_TIME" Type="date" />
+    <Property Name="INSERT_USER" Type="varchar2" MaxLength="10" />
+    <Property Name="UPDATE_TIME" Type="date" />
+    <Property Name="UPDATE_USER" Type="varchar2" MaxLength="10" />
+  </EntityType>
+  <EntityType Name="TC_USER">
+    <Key>
+      <PropertyRef Name="USER_ID" />
+    </Key>
+    <Property Name="USER_ID" Type="number" Precision="38" Scale="0" Nullable="false" />
+    <Property Name="USER_CODE" Type="varchar2" MaxLength="30" />
+    <Property Name="USER_NAME" Type="varchar2" MaxLength="60" />
+    <Property Name="PASS_WORD" Type="varchar2" MaxLength="20" />
+    <Property Name="ENGLISH_NAME" Type="varchar2" MaxLength="30" />
+    <Property Name="PLANT_ID" Type="number" Precision="38" Scale="0" />
+    <Property Name="DEPT_ID" Type="number" Precision="38" Scale="0" />
+    <Property Name="DUTY_ID" Type="number" Precision="38" Scale="0" />
+    <Property Name="LANG_ID" Type="number" Precision="38" Scale="0" />
+    <Property Name="USE_YN" Type="char" MaxLength="1" />
+    <Property Name="INSERT_TIME" Type="date" />
+    <Property Name="INSERT_USER" Type="varchar2" MaxLength="10" />
+    <Property Name="UPDATE_TIME" Type="date" />
+    <Property Name="UPDATE_USER" Type="varchar2" MaxLength="10" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6013: The table/view 'BHVHRM.TT_TIME_SHEET' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="TT_TIME_SHEET">
+          <Property Name="ID" Type="number" Precision="38" Scale="0" />
+          <Property Name="USER_ID" Type="number" Precision="38" Scale="0" />
+          <Property Name="TIME" Type="date" />
+          <Property Name="STATUS" Type="number" Precision="38" Scale="0" />
+          <Property Name="INSERT_TIME" Type="date" />
+        </EntityType>-->
+  <Function Name="GET_TIME_STAMP" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="BHVHRM">
+    <Parameter Name="P_FROM_DATE" Type="varchar2" Mode="In" />
+    <Parameter Name="P_TO_DATE" Type="varchar2" Mode="In" />
+    <Parameter Name="P_USER_CODE" Type="varchar2" Mode="In" />
+    <Parameter Name="P_DEPART" Type="varchar2" Mode="In" />
+  </Function>
+  <EntityContainer Name="ModelStoreContainer">
+    <EntitySet Name="TC_COMMON" EntityType="Self.TC_COMMON" Schema="BHVHRM" store:Type="Tables" />
+    <EntitySet Name="TC_USER" EntityType="Self.TC_USER" Schema="BHVHRM" store:Type="Tables" />
+  </EntityContainer>
+</Schema>

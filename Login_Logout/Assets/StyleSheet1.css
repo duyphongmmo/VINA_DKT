@@ -1,0 +1,21 @@
+﻿@import url('https://fonts.googleapis.com/css?family=aria');
+ body
+{
+    font-family:'aria';
+    font-size: 22px;
+    color:#222;
+    
+}
+ .carousel-inner img {
+	width: 100%;
+    height:100%;
+}
+.carousel-caption {
+	position: absolute;
+	top: 90%;
+}
+.carousel-caption h1 {
+	font-size: 400%;
+	text-transform: uppercase;
+	text-shadow: 5px 5px 15px #000;
+}

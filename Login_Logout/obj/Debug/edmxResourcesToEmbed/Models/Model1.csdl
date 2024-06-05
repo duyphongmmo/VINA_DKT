@@ -1,0 +1,50 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="TC_COMMON">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+    <Property Name="CODE" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="NAME" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
+    <Property Name="PARENT_ID" Type="Decimal" Precision="38" Scale="0" />
+    <Property Name="REMARK" Type="String" MaxLength="4000" FixedLength="false" Unicode="false" />
+    <Property Name="SORT_INDEX" Type="Decimal" Precision="38" Scale="0" />
+    <Property Name="USE_YN" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+    <Property Name="DEFAULT_YN" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+    <Property Name="USER_DEFINE" Type="String" MaxLength="4000" FixedLength="false" Unicode="false" />
+    <Property Name="INSERT_TIME" Type="DateTime" />
+    <Property Name="INSERT_USER" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="UPDATE_TIME" Type="DateTime" />
+    <Property Name="UPDATE_USER" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="TC_USER">
+    <Key>
+      <PropertyRef Name="USER_ID" />
+    </Key>
+    <Property Name="USER_ID" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+    <Property Name="USER_CODE" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="USER_NAME" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
+    <Property Name="PASS_WORD" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="ENGLISH_NAME" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="PLANT_ID" Type="Decimal" Precision="38" Scale="0" />
+    <Property Name="DEPT_ID" Type="Decimal" Precision="38" Scale="0" />
+    <Property Name="DUTY_ID" Type="Decimal" Precision="38" Scale="0" />
+    <Property Name="LANG_ID" Type="Decimal" Precision="38" Scale="0" />
+    <Property Name="USE_YN" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+    <Property Name="INSERT_TIME" Type="DateTime" />
+    <Property Name="INSERT_USER" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="UPDATE_TIME" Type="DateTime" />
+    <Property Name="UPDATE_USER" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityContainer Name="Entities2" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="TC_COMMON" EntityType="Self.TC_COMMON" />
+    <EntitySet Name="TC_USER" EntityType="Self.TC_USER" />
+    <FunctionImport Name="GET_TIME_STAMP">
+      <Parameter Name="P_FROM_DATE" Mode="In" Type="String" />
+      <Parameter Name="P_TO_DATE" Mode="In" Type="String" />
+      <Parameter Name="P_USER_CODE" Mode="In" Type="String" />
+      <Parameter Name="P_DEPART" Mode="In" Type="String" />
+    </FunctionImport>
+  </EntityContainer>
+</Schema>

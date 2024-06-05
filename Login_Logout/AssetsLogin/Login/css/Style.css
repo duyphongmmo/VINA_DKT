@@ -1,0 +1,22 @@
+﻿@import url('https://fonts.googleapis.com/css?family=Gamja+Flower');
+body {
+    font-family: 'Gamja Flower';
+    font-size: 28px;
+}
+.carousel-inner img
+{
+    width:100%;
+}
+.carousel-caption
+{
+    position:absolute;
+    top:50%;
+}
+.carousel-caption h1{
+    font-size:200%;
+    text-shadow:5px 5px 15px #000;
+}
+.carousel-caption h3{
+    font-size:200%;
+    text-shadow:2px 2px 10px #000;
+}

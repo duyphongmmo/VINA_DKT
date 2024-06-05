@@ -1,0 +1,95 @@
+
+
+@media only screen and (max-width: 320px)
+{
+    #wrapper
+    {
+        display: block;
+        margin: 0 auto;
+    }
+    #accordionSidebar
+    {
+        width:20%;
+    }
+    #content-wrapper
+    {
+        width:100%;
+    }
+    .container-fluid
+    {
+         width:100%;
+    }
+}
+@media only screen and (max-width: 600px)
+{
+    #wrapper
+    {
+        display: block;
+        margin: 0 auto;
+    }
+    #accordionSidebar
+    {
+        width:20%;
+    }
+    #content-wrapper
+    {
+        width:100%;
+    }
+    .btn-primary {
+        padding: 6px;
+        font-size: 12px;
+    }
+    .input-group-append {
+        margin-left: -100px;
+    }
+    .viewport-input {
+        padding: 0;
+        right: 40px;
+    }
+    .container-fluid
+    {
+         width:100%;
+    }
+}
+
+@media only screen and (max-width: 860px)
+{
+    #wrapper
+    {
+        display: block;
+        margin: 0 auto;
+    }
+    #accordionSidebar
+    {
+        width:20%;
+    }
+    #content-wrapper
+    {
+        width:100%;
+    }
+    .container-fluid
+    {
+         width:100%;
+    }
+}
+@media only screen and (max-width: 1024px)
+{
+    #wrapper
+    {
+        display: block;
+        margin: 0 auto;
+    }
+    #accordionSidebar
+    {
+        width:20%;
+    }
+    #content-wrapper
+    {
+        width:100%;
+    }
+    .container-fluid
+    {
+         width:100%;
+    }
+}
+

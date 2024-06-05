@@ -1,0 +1,229 @@
+﻿@{
+    string url = Request.Url.AbsolutePath;
+
+    var dept = Session["DEPT_ID"] as int?;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>@ViewBag.Title</title>
+    <link rel="icon" href="~/Assets/img/main_logo_pc.png">
+    <!-- Custom fonts for this template-->
+    <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
+          rel="stylesheet">
+    <!-- Custom styles for this template-->
+    <link href="~/Assets/css/Style.css" rel="stylesheet" />
+    <link href="~/Assets/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+    <link href="~/Assets/css/sb-admin-2.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="~/Assets/AccessMange/vendor/bootstrap-datepicker/bootstrap-datepicker.min.css">
+    <link href="~/Assets/AccessMange/css/acesss-manage.css" rel="stylesheet">
+    <style>
+        .datepicker td, .datepicker th {
+            padding: 7px;
+        }
+
+        #active-nl,
+        #active-nl * {
+            color: #fff;
+        }
+
+        .nav-link {
+            font-size: 14px;
+            cursor: pointer;
+        }
+    </style>
+    @if (TempData["msg"] != null)
+    {
+        <script type="text/javascript">
+            alert('@TempData["msg"]')
+        </script>
+    }
+    @RenderSection("styles", required: false)
+
+</head>
+
+<body id="page-top">
+    <!--Animation loadpage-->
+    <div class="animated-gradient"></div>
+    <!-- Page Wrapper -->
+    <div id="wrapper">
+        <!-- Sidebar -->
+        <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar"
+            style="background-color:#1f8798;">
+            <!-- Sidebar - Brand -->
+            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="/" style="height:0.375rem">
+                <div class="sidebar-brand-text mx-3" style="background-color:#f6933efc">
+                    DKT VINA
+                    HRM<sup></sup>
+                </div>
+            </a>
+            <!-- Nav Item - Pages Collapse Menu -->
+            <li class="nav-item @(url == @Url.Action("Index","AccessManage") ||  url == @Url.Action("IndexOut","AccessManage")? "active-navli" : "")"
+                style="color:#fff">
+                <a class="nav-link collapsed "
+                   id="@(url == @Url.Action("Index","AccessManage") ||  url == @Url.Action("IndexOut","AccessManage") ? "active-nl" : "")"
+                   data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
+                    <i class="fas fa-users-cog"></i>
+                    <span>Quản lý nhân viên</span>
+                </a>
+                <ul class="collapse list-unstyled rounded-right m-0" id="collapseTwo"
+                    style="background-color: #1f8798;">
+                    <li class="rounded-right" style="">
+                        <a class="nav-link" href="@Url.Action("Index","AccessManage")">
+                            <i class="fas fa-long-arrow-alt-right fa-sm" style="padding-left:15px;"></i>
+                            <span>Đi muộn - về sớm</span>
+                        </a>
+                    </li>
+                    <li class="rounded-right" style="">
+                        <a class="nav-link" href="@Url.Action("IndexOut","AccessManage")">
+                            <i class="fas fa-arrows-alt-h fa-sm" style="padding-left:15px;"></i>
+                            <span>Xin ra ngoài</span>
+                        </a>
+                    </li>
+                </ul>
+            </li>
+            <li class="nav-item @(url == @Url.Action("GuestIn","AccessManage") ? "active-navli" : "")"
+                style="color:#fff">
+                <a class="nav-link collapsed " id="@(url == @Url.Action("GuestIn","AccessManage") ? "active-nl" : "")"
+                   onclick="location.href='@Url.Action("GuestIn","AccessManage")'">
+                    <i class="fas fa-user-tie fa-sm" style="padding-right: 8px;"></i><span>Quản lý khách vào</span>
+                </a>
+            </li>
+            <li class="nav-item @(url == @Url.Action("Index","Hr") ? "active-navli" : "")"
+                style="color:#fff">
+                <a class="nav-link collapsed " id="@(url == @Url.Action("Index","Hr") ? "active-nl" : "")"
+                   onclick="location.href='@Url.Action("Index","Hr")'">
+
+                    <i class="fas fa-user-friends fa-sm" style=""></i>
+                    <span>Báo cáo nhân lực</span>
+                </a>
+            </li>
+            <li class="nav-item @(url == @Url.Action("Dashboard","AccessManage") ? "active-navli" : "")">
+                <a class="nav-link collapsed" id="@(url == @Url.Action("Dashboard","AccessManage") ? "active-nl" : "")"
+                   onclick="location.href='@Url.Action("Dashboard","AccessManage")'">
+                    <i class="fas fa-chart-area fa-sm mr-2 text-gray-400"></i>
+
+                    <span>Thống kê</span>
+                </a>
+            </li>
+
+
+            <hr class="sidebar-divider d-none d-md-block">
+            <!-- Sidebar Toggler (Sidebar) -->
+            <div class="text-center d-none d-md-inline">
+                <button class="rounded-circle border-0 sidebarToggle" id="sidebarToggle"></button>
+            </div>
+        </ul>
+        <!-- End of Sidebar -->
+        <!-- Content Wrapper -->
+        <div id="content-wrapper" class="d-flex flex-column" style="background-color: #efeff6;">
+            <!-- Main Content -->
+            <div id="content">
+                <!-- Topbar -->
+                <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow"
+                     style="height:2.375rem; margin-bottom:0.1rem!important">
+                    <!-- Sidebar Toggle (Topbar) -->
+                    <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3 sidebarToggle">
+                        <i class="fa fa-bars"></i>
+                    </button>
+                    <!-- Topbar Search -->
+                    <!-- Topbar Navbar -->
+                    <ul class="navbar-nav ml-auto">
+                        @*<div class="topbar-divider d-none d-sm-block"></div>*@
+                        <li class="nav-item dropdown no-arrow">
+                            <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <span class="mr-2 d-none d-lg-inline text-gray-600 small">
+                                    Mật khẩu mặc định
+                                </span>
+
+                            </a>
+                        <!-- Dropdown - User Information -->
+                        <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
+                                &nbsp &nbsp &nbsp
+                                &nbsp<i class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i>
+                            </div>
+
+                        </li>
+                        <!-- Nav Item - User Information -->
+
+                    </ul>
+                </nav>
+                <!-- End of Topbar -->
+                <!-- Begin Page Content container-fluid pt-2 -->
+                <div class="ac-container">
+                    @RenderBody()
+                </div>
+
+                <!-- /.container-fluid -->
+            </div>
+            <!-- End of Main Content -->
+            <!-- Footer -->
+            @*<footer class="sticky-footer bg-white">
+                <div class="container my-auto">
+                <div class="copyright text-center my-auto">
+                <span></span>
+                </div>
+                </div>
+                </footer>*@
+            <!-- End of Footer -->
+        </div>
+        <!-- End of Content Wrapper -->
+    </div>
+    <!-- End of Page Wrapper -->
+    <!-- Scroll to Top Button-->
+    <a class="scroll-to-top rounded" href="#page-top">
+        <i class="fas fa-angle-up"></i>
+    </a>
+
+
+    <!-- Bootstrap core JavaScript-->
+    <script src="~/Assets/vendor/jquery/jquery.min.js"></script>
+    <script src="~/Assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <!-- Core plugin JavaScript-->
+    <script src="~/Assets/vendor/jquery-easing/jquery.easing.min.js"></script>
+    <!-- Custom scripts for all pages-->
+    <script src="~/Assets/js/sb-admin-2.min.js"></script>
+    <!-- Page level plugins -->
+    <script src="~/Assets/vendor/datatables/jquery.dataTables.min.js"></script>
+    <script src="~/Assets/vendor/datatables/dataTables.bootstrap4.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap-datepicker@1.10.0/dist/js/bootstrap-datepicker.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap-datepicker@1.10.0/dist/locales/bootstrap-datepicker.vi.min.js"></script>
+    <!-- Page level custom scripts -->
+    @*<script src="~/Assets/js/demo/datatables-demo.js"></script>*@
+    <script defer>
+        var toggled = localStorage.getItem('toggled')
+        if (!toggled || toggled == 'false') {
+            localStorage.setItem('toggled', false)
+            toggled = false
+        } else {
+            document.querySelector('button#sidebarToggle').click()
+        }
+
+        var buttons = document.querySelectorAll('button.sidebarToggle')
+        buttons.forEach(button => {
+            button.addEventListener('click', () => {
+                toggled = !toggled;
+                localStorage.setItem("toggled", toggled)
+            });
+        });
+        // animation
+        $(window).on('load', function () {
+            setTimeout(() => {
+                $('.animated-gradient').fadeOut('slow')
+            }, 600)
+        });
+        $(window).on('beforeunload', function () {
+            $('.animated-gradient').fadeIn('slow')
+        });
+    </script>
+    @RenderSection("scripts", required: false)
+</body>
+
+</html>

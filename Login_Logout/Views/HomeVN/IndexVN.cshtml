@@ -1,0 +1,637 @@
+﻿@model Login_Logout.Models.AllSalary
+
+@{
+    ViewBag.Title = "AllSalary";
+    Layout = "~/Views/Shared/_LayoutTableVN.cshtml";
+}
+<head>
+    <style>
+        table, td, th {
+            border: 1px solid green;
+            width: auto;
+            font-size: 12px;
+        }
+
+        table {
+            border-collapse: collapse;
+            border: 1px;
+        }
+
+        td, th {
+            padding: 15px;
+        }
+
+        th {
+            background-color: #f6933efc;
+            color: white;
+            text-align: center;
+            font-size: 12px;
+        }
+
+        td {
+            text-align: center;
+            font-size: 11px;
+        }
+
+        .table thead th {
+            vertical-align: middle;
+        }
+
+        input[type=text] {
+            transition: width 0.4s ease-in-out;
+        }
+
+        .style-padding-col {
+            margin-bottom: 5px;
+        }
+    </style>
+</head>
+
+@using (Html.BeginForm("IndexVN", "HomeVN", FormMethod.Get, new { @class = "d-none d-sm-inline-block form-inline mw-100 navbar-search row", @style = " font-size:12px" }))
+{
+    <div class="row" style="margin:unset;padding-top:5px;margin-left:5px">
+        <div class="col-md-2 style-padding-col">
+            <a class="btn button" style="background-color: #6e707e;padding: 6px 7px;display: inline-block;border: none;border-radius: 7px;color: white;">
+                Tháng tìm kiếm
+            </a>
+        </div>
+        <div class="col-md-3 style-padding-col">
+            <input style="box-sizing: border-box;border: 2px solid #ccc;border-radius: 7px;font-size: 13px;background-color: #3CBC8D;
+                 color: teal;" type="month" name="Month" id="today" class="form-control bg-light border-0 small viewport-input" placeholder="08/06/2020" />
+        </div>
+
+        <div class="col-md-2 style-padding-col">
+            <button class="btn btn-primary" type="submit" style="background-color: SeaGreen;padding: 6px 17px;display: inline-block;border: none;border-radius: 7px;">
+                <i class="fas fa-search"></i> Tìm kiếm
+            </button>
+        </div>
+        <div class="col-md-2 style-padding-col"></div>
+    </div>
+
+}
+<script>
+    var isDateSupported = function () {
+        var input = document.createElement('input');
+        input.setAttribute('type', 'date');
+        input.setAttribute('value', 'x');
+        return (input.value !== 'x');
+    };
+    // Variables
+    var field = document.querySelector('#today');
+    var date = new Date();
+    // If [type="date"] is supported, update the DOM
+    if (isDateSupported()) {
+        // Remove attributes
+        field.removeAttribute('pattern');
+        field.removeAttribute('placeholder');
+        // Remove the helper text
+        var helperText = document.querySelector('[for="today"] .description');
+        if (helperText) {
+            helperText.parentNode.removeChild(helperText);
+        }
+    }
+
+    // Check if there is a stored month value in sessionStorage
+    var storedMonth = sessionStorage.getItem('selectedMonth');
+    if (storedMonth) {
+        // Set the value if sessionStorage has a stored value
+        field.value = storedMonth;
+    } else {
+        // Set the value only if the field is empty
+        if (!field.value) {
+            field.value = date.getFullYear().toString() + '-' + (date.getMonth() + 1).toString().padStart(2, 0);
+
+            // Save the selected month to sessionStorage
+            sessionStorage.setItem('selectedMonth', field.value);
+        }
+    }
+
+    // Check if the search button is clicked
+    document.querySelector('.btn-primary').addEventListener('click', function () {
+        // Save the selected month to sessionStorage
+        sessionStorage.setItem('selectedMonth', field.value);
+    });
+</script>
+
+<script>
+    function formatNumber(value) {
+        return new Intl.NumberFormat('vi-VN', { style: 'currency', currency: 'VND' }).format(value);
+    }
+
+    // Hàm này sẽ được gọi khi trang web đã tải hoàn toàn
+    window.onload = function () {
+        var elements = document.querySelectorAll('.format-number'); // Lấy tất cả các phần tử có class 'format-number'
+
+        elements.forEach(function (element) {
+            var value = parseFloat(element.textContent); // Lấy giá trị số từ nội dung của phần tử
+            var formattedValue = formatNumber(value); // Định dạng giá trị số
+            element.textContent = formattedValue; // Gán lại giá trị đã định dạng vào phần tử
+        });
+    }
+</script>
+
+<div>
+    <h6 style="color: #990000; font-size: 25px; margin: 0; font-weight: bold; text-transform: uppercase; padding:5px">Thu Nhập</h6>
+    <form style="width:100%">
+        <div class="card-body" style="margin-left:5px;margin-right:5px">
+            <div class="table-responsive">
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th rowspan="2">
+                                Tháng
+                            </th>
+                            <th rowspan="2">
+                                Mã nhân viên
+                            </th>
+                            <th rowspan="2">
+                                Họ tên
+                            </th>
+                            <th rowspan="2">
+                                Lương cơ bản
+                            </th>
+                            <th rowspan="2">
+                                P/c Chức vụ
+                            </th>
+                            <th rowspan="2">
+                                Trợ Cấp Đời sống
+                            </th>
+                            <th rowspan="2">
+                                P/C Chuyên cần
+                            </th>
+                            <th rowspan="2">
+                                P/c Kiểm tra
+                            </th>
+                            <th rowspan="2">
+                                P/c Quần áo
+                            </th>
+                            <th rowspan="2">
+                                P/c Thâm niên
+                            </th>
+
+                            <th rowspan="2">
+                                P/C an toàn / PCCC
+                            </th>
+                            <th rowspan="2">
+                                Thưởng
+                            </th>
+                            <th rowspan="2">
+                                Trợ cấp điện thoại
+                            </th>
+                        </tr>
+                    </thead>
+                    @if (Model.ListSalary != null)
+                    {
+                        foreach (var item in Model.ListSalary)
+                        {
+                            <tr>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Month)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Mumber)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.name)
+                                </td>
+                                <td class="format-number">
+                                    @Html.DisplayFor(modelItem => item.basesalary)
+                                </td>
+                                <td class="format-number">
+                                    @Html.DisplayFor(modelItem => item.position)
+                                </td>
+                                <td class="format-number">
+                                    @Html.DisplayFor(modelItem => item.libing)
+                                </td>
+                                <td class="format-number">
+                                    @Html.DisplayFor(modelItem => item.punctuality)
+                                </td>
+                                <td class="format-number">
+                                    @Html.DisplayFor(modelItem => item.checksub)
+                                </td>
+                                <td class="format-number">
+                                    @Html.DisplayFor(modelItem => item.clothes)
+                                </td>
+                                <td class="format-number">
+                                    @Html.DisplayFor(modelItem => item.seniority)
+                                </td>
+                                <td class="format-number">
+                                    @Html.DisplayFor(modelItem => item.fire)
+                                </td>
+                                <td class="format-number">
+                                    @Html.DisplayFor(modelItem => item.Bouns)
+                                </td>
+                                <td class="format-number">
+                                    @Html.DisplayFor(modelItem => item.P39)
+                                </td>
+                            </tr>
+                        }
+
+                    }
+
+                </table>
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th rowspan="2">
+                                P/c Sửa hàng
+                            </th>
+                            <th rowspan="2">
+                                P/c thâm niên kỹ thuật
+                            </th>
+                            <th rowspan="2">
+                                Thưởng kiểm tra
+                            </th>
+
+                            <th rowspan="2">
+                                OT ca ngày (150%)
+                            </th>
+                            <th rowspan="2">
+                                OT ca ngày(210%)
+                            </th>
+                            <th rowspan="2">
+                                OT ca đêm (200%)
+                            </th>
+                            <th rowspan="2">
+                                OT ca đêm (215%)
+                            </th>
+                            <th rowspan="2">
+                                TC ca đêm(30%)
+                            </th>
+                            <th rowspan="2">
+                                OT ca ngày CN(200%)
+                            </th>
+                            <th rowspan="2">
+                                OT ca đêm CN(240%)
+                            </th>
+                            <th rowspan="2">
+                                OT ca đêm CN(270%)
+                            </th>
+                            <th rowspan="2">
+                                OT ca ngày Lễ(300%)
+                            </th>
+                            <th rowspan="2">
+                                OT ca đêm Lễ(390%)
+                            </th>
+                        </tr>
+                    </thead>
+                    @if (Model.ListSalary != null)
+                    {
+                        foreach (var item in Model.ListSalary)
+                        {
+                            <tr>
+                                <td class="format-number">
+                                    @Html.DisplayFor(modelItem => item.P46)
+                                </td>
+                                <td class="format-number">
+                                    @Html.DisplayFor(modelItem => item.P42)
+                                </td>
+                                <td class="format-number">
+                                    @Html.DisplayFor(modelItem => item.compensate)
+                                </td>
+                                <td class="format-number">
+                                    @Html.DisplayFor(modelItem => item.P10)
+                                </td>
+                                <td class="format-number">
+                                    @Html.DisplayFor(modelItem => item.P12)
+                                </td>
+                                <td class="format-number">
+                                    @Html.DisplayFor(modelItem => item.P24)
+                                </td>
+                                <td class="format-number">
+                                    @Html.DisplayFor(modelItem => item.P26)
+                                </td>
+                                <td class="format-number">
+                                    @Html.DisplayFor(modelItem => item.P28)
+                                </td>
+                                <td class="format-number">
+                                    @Html.DisplayFor(modelItem => item.P14)
+                                </td>
+                                <td class="format-number">
+                                    @Html.DisplayFor(modelItem => item.P16)
+                                </td>
+                                <td class="format-number">
+                                    @Html.DisplayFor(modelItem => item.P18)
+                                </td>
+                                <td class="format-number">
+                                    @Html.DisplayFor(modelItem => item.P20)
+                                </td>
+                                <td class="format-number">
+                                    @Html.DisplayFor(modelItem => item.P22)
+                                </td>
+                            </tr>
+                        }
+                    }
+                </table>
+
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th rowspan="2">
+                                Trợ cấp 45p
+                            </th>
+                            <th rowspan="2">
+                                Hỗ trợ làm đêm
+                            </th>
+                            <th rowspan="2">
+                                Giờ trừ
+                            </th>
+                            <th rowspan="2">
+                                Hỗ trợ Nuôi con nhỏ
+                            </th>
+                            <th rowspan="2">
+                                Trợ cấp Sinh lý(Phụ Nữ)
+                            </th>
+                            <th rowspan="2">
+                                Nghỉ lý do công ty
+                            </th>
+                            <th rowspan="2">
+                                Thưởng giới thiệu
+                            </th>
+                            <th rowspan="2">
+                                Điều chỉnh lương
+                            </th>
+                        </tr>
+                    </thead>
+                    @if (Model.ListSalary != null)
+                    {
+                        foreach (var item in Model.ListSalary)
+                        {
+                            <tr>
+                                <td class="format-number">
+                                    @Html.DisplayFor(modelItem => item.P30)
+                                </td>
+                                <td class="format-number">
+                                    @Html.DisplayFor(modelItem => item.P32)
+                                </td>
+                                <td class="format-number">
+                                    0
+                                    @*  @Html.DisplayFor(modelItem => item.P42)*@
+                                </td>
+                                <td class="format-number">
+                                    @Html.DisplayFor(modelItem => item.P48)
+                                </td>
+                                <td class="format-number">
+                                    @Html.DisplayFor(modelItem => item.P49)
+                                </td>
+                                <td class="format-number">
+                                     @Html.DisplayFor(modelItem => item.P93)
+                                </td>
+                                <td class="format-number">
+                                    @Html.DisplayFor(modelItem => item.P94)
+                                </td>
+                                <td class="format-number">
+                                     @Html.DisplayFor(modelItem => item.P95)
+                                </td>
+                            </tr>
+                        }
+                    }
+                </table>
+
+            </div>
+        </div>
+    </form>
+    <h6 style="color: #990000; font-size: 25px; margin: 0; font-weight: bold; text-transform: uppercase; padding:5px">Khấu Trừ</h6>
+    <form style="width:100%">
+        <div class="card-body" style="margin-left:5px;margin-right:5px">
+            <div class="table-responsive">
+                <table style="width:60%">
+                    <thead>
+                        <tr>
+
+                            <th rowspan="2">
+                                BHXH
+                            </th>
+                            <th rowspan="2">
+                                BHTN
+
+                            </th>
+                            <th rowspan="2">
+                                BHYT
+
+                            </th>
+                            <th rowspan="2">
+                                Thuế thu nhập
+
+                            </th>
+                            <th rowspan="2">
+                                Phí Công đoàn
+
+                            </th>
+                            <th rowspan="2">
+                                Bồi thường
+                            </th>
+                            <th rowspan="2">
+                                Mua thêm quần áo
+                            </th>
+                        </tr>
+                    </thead>
+                    @if (Model.ListSalary != null)
+                    {
+                        foreach (var item in Model.ListSalary)
+                        {
+                            <tr>
+                                <td class="format-number">
+                                    @Html.DisplayFor(modelItem => item.P76)
+                                </td>
+                                <td class="format-number">
+                                    @Html.DisplayFor(modelItem => item.P77)
+                                </td>
+                                <td class="format-number">
+                                    @Html.DisplayFor(modelItem => item.P78)
+                                </td>
+                                <td class="format-number">
+                                    @Html.DisplayFor(modelItem => item.P87)
+                                </td>
+                                <td class="format-number">
+                                    @Html.DisplayFor(modelItem => item.P75)
+                                </td>
+                                <td class="format-number">
+                                    @Html.DisplayFor(modelItem => item.P79)
+                                </td>
+                                <td class="format-number">
+                                    @Html.DisplayFor(modelItem => item.P63)
+                                </td>
+                            </tr>
+                        }
+                    }
+                </table>
+            </div>
+        </div>
+    </form>
+
+    <h6 style="color: #990000; font-size: 25px; margin: 15px 0 0; font-weight: bold; text-transform: uppercase; padding: 5px">Tổng</h6>
+
+    <form style="width:100%">
+        <div class="card-body" style="margin-left:5px;margin-right:5px">
+            <div class="table-responsive">
+                <table style="width:30%">
+                    <thead>
+                        <tr>
+                            <th rowspan="2">
+                                Tổng thu nhập
+                            </th>
+                            <th rowspan="2">
+                                Tổng khấu trừ
+                            </th>
+                            <th rowspan="2">
+                                Quyết toán thuế cuối năm
+                            </th>
+                            <th rowspan="2">
+                                Lương thực lĩnh
+                            </th>
+                        </tr>
+                    </thead>
+                    @if (Model.ListSalary != null)
+                    {
+                        foreach (var item in Model.ListSalary)
+                        {
+                            <tr>
+                                <td class="format-number">
+                                    @Html.DisplayFor(modelItem => item.P56)
+                                </td>
+                                <td class="format-number">
+                                    @Html.DisplayFor(modelItem => item.P90)
+                                </td>
+                                <td class="format-number">
+                                    @Html.DisplayFor(modelItem => item.P91)
+                                </td>
+                                <td class="format-number">
+                                    @Html.DisplayFor(modelItem => item.P92)
+                                </td>
+                            </tr>
+                        }
+                    }
+                </table>
+            </div>
+        </div>
+    </form>
+    <h6 style="color: #990000; font-size: 25px; margin: 15px 0 0; font-weight: bold; text-transform: uppercase; padding: 5px">Mức lương tiêu chuẩn</h6>
+    <form style="width:100%">
+        <div class="card-body" style="margin-left:5px;margin-right:5px">
+            <div class="table-responsive">
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th rowspan="2">
+                                Mã nhân viên
+                            </th>
+                            <th rowspan="2">
+                                Họ và tên
+                            </th>
+                            <th rowspan="2">
+                                Lương cơ bản
+                            </th>
+                            <th rowspan="2">
+                                P/c Chức vụ
+                            </th>
+                            <th rowspan="2">
+                                Trợ cấp Đời sống
+                            </th>
+                            <th rowspan="2">
+                                P/C Chuyên cần
+                            </th>
+                            <th rowspan="2">
+                                P/C Kiểm tra
+                            </th>
+                            <th rowspan="2">
+                                P/C Quần áo
+                            </th>
+                            <th rowspan="2">
+                                P/c Thâm niên
+                            </th>
+                            <th rowspan="2">
+                                P/C an toàn / PCCC
+                            </th>
+                            <th rowspan="2">
+                                Thưởng
+                            </th>
+                            <th rowspan="2">
+                                Trợ cấp điện thoại
+                            </th>
+                            <th rowspan="2">
+                                P/C Sửa hàng
+                            </th>
+                            <th rowspan="2">
+                                P/C thâm niên kỹ thuật
+                            </th>
+                            <th rowspan="2">
+                                Thưởng Kiểm tra
+                            </th>
+                        </tr>
+                    </thead>
+                    @if (Model.ListBase != null)
+                    {
+                        foreach (var item in Model.ListBase)
+                        {
+                            <tr>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.number)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.name)
+                                </td>
+                                <td class="format-number">
+                                    @Html.DisplayFor(modelItem => item.P02)
+                                </td>
+                                <td class="format-number">
+                                    @Html.DisplayFor(modelItem => item.P37)
+                                </td>
+                                <td class="format-number">
+                                    @Html.DisplayFor(modelItem => item.P44)
+                                </td>
+                                <td class="format-number">
+                                    @Html.DisplayFor(modelItem => item.P43)
+                                </td>
+                                <td class="format-number">
+                                    @Html.DisplayFor(modelItem => item.P47)
+                                </td>
+                                <td class="format-number">
+                                    @Html.DisplayFor(modelItem => item.P45)
+                                </td>
+                                <td class="format-number">
+                                    @Html.DisplayFor(modelItem => item.P41)
+                                </td>
+                                <td class="format-number">
+                                    @Html.DisplayFor(modelItem => item.P38)
+                                </td>
+                                <td class="format-number">
+                                    @Html.DisplayFor(modelItem => item.P40)
+                                </td>
+                                <td class="format-number">
+                                    @Html.DisplayFor(modelItem => item.P39)
+                                </td>
+                                <td class="format-number">
+                                    @Html.DisplayFor(modelItem => item.P46)
+                                </td>
+                                <td class="format-number">
+                                    @Html.DisplayFor(modelItem => item.P42)
+                                </td>
+                                <td class="format-number">
+                                    @Html.DisplayFor(modelItem => item.A37)
+                                </td>
+                            </tr>
+                        }
+                    }
+                </table>
+            </div>
+        </div>
+    </form>
+
+    @{
+        if (TempData["msg"] != null)
+        {
+            <script type="text/javascript">
+                alert('@TempData["msg"]');
+            </script>
+        }
+    }
+    @if (ViewBag.Message != null)
+    {
+        <script language="javascript">
+
+            @*alert("@ViewBag.Message");*@
+            confirm(" Tiền lương tháng trước sẽ được mở vào ngày 10 hàng tháng ");
+        </script>
+    }
+</div>

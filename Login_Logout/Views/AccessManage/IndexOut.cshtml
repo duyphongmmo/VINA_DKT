@@ -1,0 +1,258 @@
+﻿@{
+    ViewBag.Title = "Đi ra ngoài";
+    Layout = "~/Views/Shared/_LayoutAccessManage.cshtml";
+
+    string type = Request.QueryString["type"];
+    //int uid = Request.QueryString["id"] as int?;
+}
+@section styles {
+
+    <style>
+    </style>
+    @*<script language="javascript">
+        confirm(" Tiền lương tháng trước sẽ được mở vào ngày 10 hàng tháng ");
+        </script>*@
+}
+<div class="card shadow py-1 px-2 d-flex flex-row justify-content-between">
+    <div class="px-2 d-center">
+        <span class="text-breadcrumb text-gradient">
+        <i class="fas fa-angle-double-right fa-sm"></i>
+            Quản lý nhân viên ra ngoài : <span class="time-now"></span>
+        </span>
+    </div>
+    <!--Left-->
+    <div class="d-flex space-grotesk card-total">
+        <div class="card-total-b"  style="border-left: 2px solid #f46a44d9;">
+            <p>Đang chờ</p>
+            <div class="d-flex align-items-md-center">
+                <i class="fas fa-user-clock fa-sm float-left" style="color: #f46a44d9;"></i>
+                <span style="padding-left: 20px; color: #f46a44d9;">4</span>
+            </div>
+        </div>
+        <div class="card-total-b" style="border-left: 2px solid #78c6ae;">
+            <p>Đã ra</p>
+            <div class="d-flex align-items-md-center" >
+                <i class="fas fa-walking fa-sm float-left" style="color: #78c6ae"></i>
+                <span style="padding-left: 20px; color: #78c6ae;">4</span>
+            </div>
+        </div>
+        <div class="card-total-b" style="border-left: 2px solid #4a94c0;">
+            <p>Đã vào</p>
+            <div class="d-flex align-items-md-center">
+                <i class="fas fa-walking fa-sm float-left" style="transform: rotateY(180deg); color: #4a94c0;"></i>
+                <span style="padding-left: 20px; color: #4a94c0;">4</span>
+            </div>
+        </div> 
+        <div class="card-total-b" style="border-left: 2px solid #4a94c0;">
+            <p>Tổng cộng</p>
+            <div class="d-flex align-items-md-center">
+                <i class="fas fa-users fa-sm float-left" style="color: #4a94c0"></i>
+                <span style="padding-left: 20px; color: #4a94c0;">4</span>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!---->
+<div class="card shadow mt-1 ac-content">
+    <div class="ac-card">
+        <section class="ac-info px-4 pb-4">
+            <div class="d-flex flex-wrap justify-content-center" style="gap:100px;">
+                <div class="d-center flex-column" style="text-align: center; padding: 10px; flex: 1 1 auto;">
+                    <div style="overflow: hidden; border-radius: 50%; width: 300px;">
+                        <img class="card-img-top" alt="avatar" src="~/Assets/img/default-user.svg"
+                             onerror="this.src='/Assets/img/default-user.svg';this.onerror='';"
+                             data-holder-rendered="true">
+                    </div>
+
+                    <div style="height: 50px; padding-top: 38px;"
+                         class="d-flex align-items-md-center justify-content-center space-grotesk">
+                        <button type="button" class="btn btn-primary" style="width:150px">
+                            @*<i class="fas fa-check-square pr-2"></i>*@
+                            Duyệt
+                        </button>
+                    </div>
+                </div>
+                <div class="ac-detail-if table-shadow" style="padding: 10px; min-width: 600px; flex: 3 1 auto;">
+                    <table class="ac-table">
+                        <tr>
+                            <th colspan="2" class="text-center ac-title p-2">
+                                <i class="fas fa-info" style="font-size:18px;padding:10px;"></i>
+                                Thông tin
+                            </th>
+                        </tr>
+                        <tr>
+                            <td>Tên:</td>
+                            <td>Nguyễn Văn A</td>
+                        </tr>
+                        <tr>
+                            <td>Mã nhân viên:</td>
+                            <td>012323123</td>
+                        </tr>
+                        <tr>
+                            <td>Bộ phận:</td>
+                            <td>IT</td>
+                        </tr>
+                        <tr>
+                            <td>Chức vụ:</td>
+                            <td>Leader</td>
+                        </tr>
+                        <tr>
+                            <td>Lý do:</td>
+                            <td>Xin ra ngoài</td>
+                        </tr>
+                        <tr>
+                            <td>Ngày đăng ký:</td>
+                            <td>20/04/2024</td>
+                        </tr>
+                        <tr>
+                            <td>Giờ ra ngoài:</td>
+                            <td>8h</td>
+                        </tr>
+                        <tr>
+                            <td>Giờ vào:</td>
+                            <td>9h</td>
+                        </tr>
+                        <tr>
+                            <td>Số điện thoại:</td>
+                            <td>012343434234</td>
+                        </tr>
+                        <tr>
+                            <td>Ghi chú: <i class="fas fa-edit fa-sm cursor-pointer pl-1" id="editnote"></i> </td>
+                            <td id="note-text">...</td>
+                        </tr>
+                    </table>
+                   
+                </div>
+            </div>
+        </section>
+
+    </div>
+    @*<div class="ac-content-bg"></div>*@
+</div>
+
+<div class="card mt-2">
+    <section class="px-3 py-2 section-list">
+        <div style="border-bottom:1px solid #000;">
+            <h3>Danh sách</h3>
+        </div>
+        @* Search *@
+
+    <div class="d-flex align-items-center">
+        @using (Html.BeginForm("Index", "AccessManage", FormMethod.Get))
+        {
+            <div class="py-3  d-flex" style="gap:20px">
+                <select aria-labelledby="state" class="custom-select" id="selectType" name="type" style="width:160px">
+                    <option @(type == null || type == "all" ? "selected" : "") value="all">All</option>
+                    <option @(type == "back" ? "selected" : "") value="back">Xin về</option>
+                    <option @(type == "out" ? "selected" : "") value="out">Xin ra ngoài</option>
+                    @*<option value="">Đã duyệt</option>*@
+                </select>
+                <div>
+                    <div class="input-group">
+                        <input type="text" name="s" class="form-control input-search" aria-label="Text input">
+                        <div class="input-group-append">
+                            <button type="submit" class="btn btn-outline-secondary btn-s">
+                                <i class="fas fa-search fa-lg"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+        <div>
+            <button type="button" class="btn btn-primary btn-sm" style="background-color: var(--bs-blue)"
+                    data-toggle="tooltip" data-placement="left" title="Tooltip on left"
+                    onclick="location.href='@Request.Url.PathAndQuery'">
+                <i class="fas fa-sync-alt"></i>
+            </button>
+        </div>
+    </div>
+
+        @* table *@
+        <div style="overflow-x:auto">
+            <table class="table tb-data" style="min-width:800px">
+                <thead>
+                    <tr>
+                        <th scope="col">STT</th>
+                        <th scope="col">Mã nhân viên</th>
+                        <th scope="col">Họ tên</th>
+                        <th scope="col">Bộ phận</th>
+                        <th scope="col">Lý do</th>
+                        <th scope="col">Ngày đăng ký</th>
+                        <th scope="col">Thời gian</th>
+                        <th scope="col">Ghi chú</th>
+                        <th scope="col">Trạng thái</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td scope="row">1</td>
+                        <td>NV123</td>
+                        <td>Mark</td>
+                        <td>QC</td>
+                        <td style="color:var(--complete)">Xin ra ngoài</td>
+                        <td>20/04/2024</td>
+                        <td>8h - 9h</td>
+                        <td>...</td>
+                        <td><span class="badge-status badge-complete">Đã duyệt</span></td>
+                    </tr>
+                    <tr>
+                        <td scope="row">2</td>
+                        <td>NV456</td>
+                        <td>Mark</td>
+                        <td>QC</td>
+                        <td style="color:var(--pending)">Xin về</td>
+                        <td>20/04/2024</td>
+                        <td>11h - 15h</td>
+                        <td>...</td>
+                        <td><span class="badge-status badge-pending">Đang chờ</span></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+    <section class="p-3">
+    </section>
+</div>
+<!-- Modal Edit Note-->
+<div class="modal fade" id="editNoteModal" tabindex="-1" aria-labelledby="editNoteModal" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Ghi chú</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label for="noteArial">Ghi chú</label>
+                    <textarea class="form-control input-edit-note" id="noteArial" rows="4"></textarea>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal"><i class="fas fa-window-close fa-sm"></i></button>
+                <button type="button" class="btn btn-primary"><i class="fas fa-save fa-sm"></i></button>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section scripts {
+    <script src="https://cdn.jsdelivr.net/npm/moment@2.30.1/moment.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $(".btn-s").on("click", function () {
+                localStorage.setItem('scrollPosition', $(window).scrollTop());
+            });
+        });
+
+        $('#editnote').on('click', function () {
+            let txt = $('#note-text').text()
+            $('#editNoteModal').modal('show');
+            $('.input-edit-note').val(txt)
+        })
+    </script>
+    <script type="text/javascript" src="~/Assets/AccessMange/js/acscript.js"></script>
+}

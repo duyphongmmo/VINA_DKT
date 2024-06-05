@@ -1,0 +1,385 @@
+﻿@model Login_Logout.Models.Response
+@{
+    ViewBag.Title = "IndexSearch";
+    Layout = "~/Views/Shared/_LayoutTableVN.cshtml";
+}
+<head>
+    <style>
+        table, td, th {
+            border: 1px solid green;
+            width: auto;
+            font-size: 12px;
+        }
+
+        table {
+            border-collapse: collapse;
+            border: 1px;
+        }
+
+        td, th {
+            padding: 10px;
+        }
+
+        th {
+            background-color: #f6933efc;
+            color: white;
+            text-align: center;
+            font-size: 12px;
+        }
+
+        td {
+            text-align: center;
+            font-size: 11px;
+        }
+
+        .table thead th {
+            vertical-align: middle;
+        }
+
+        input[type=text] {
+            transition: width 0.4s ease-in-out;
+        }
+
+        .style-padding-col {
+            margin-bottom: 5px;
+        }
+    </style>
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/pikaday/1.8.0/css/pikaday.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pikaday/1.8.0/pikaday.min.js"></script>
+</head>
+
+@using (Html.BeginForm("IndexDayMonthVN", "HomeVN", FormMethod.Get, new { @class = "d-none d-sm-inline-block form-inline mw-100 navbar-search row", @style = " font-size:12px" }))
+{
+<div class="row" style="margin:unset;padding-top:5px;margin-left:5px">
+    <div class="col-md-2 style-padding-col">
+        <a class="btn button" style="background-color: #6e707e;padding: 6px 7px;display: inline-block;border: none;border-radius: 7px;color: white;">
+            Tháng tìm kiếm
+        </a>
+    </div>
+
+    <div class="col-md-3 style-padding-col">
+        <input style="box-sizing: border-box;border: 2px solid #ccc;border-radius: 7px;font-size: 13px;background-color: #3CBC8D;
+                 color: teal;" type="month" name="Month" id="today" class="form-control bg-light border-0 small viewport-input" placeholder="08/06/2020" />
+    </div>
+
+    <div class="col-md-2 style-padding-col">
+        <button class="btn btn-primary" type="submit" style="background-color: SeaGreen;padding: 6px 17px;display: inline-block;border: none;border-radius: 7px;">
+            <i class="fas fa-search"></i> Tìm kiếm
+        </button>
+    </div>
+    <div class="col-md-2 style-padding-col"></div>
+</div>
+
+}
+<script>
+    var isDateSupported = function () {
+        var input = document.createElement('input');
+        input.setAttribute('type', 'date');
+        input.setAttribute('value', 'x');
+        return (input.value !== 'x');
+    };
+    // Variables
+    var field = document.querySelector('#today');
+    var date = new Date();
+    // If [type="date"] is supported, update the DOM
+    if (isDateSupported()) {
+        // Remove attributes
+        field.removeAttribute('pattern');
+        field.removeAttribute('placeholder');
+        // Remove the helper text
+        var helperText = document.querySelector('[for="today"] .description');
+        if (helperText) {
+            helperText.parentNode.removeChild(helperText);
+        }
+    }
+
+    // Check if there is a stored month value in sessionStorage
+    var storedMonth = sessionStorage.getItem('selectedMonth');
+    if (storedMonth) {
+        // Set the value if sessionStorage has a stored value
+        field.value = storedMonth;
+    } else {
+        // Set the value only if the field is empty
+        if (!field.value) {
+            field.value = date.getFullYear().toString() + '-' + (date.getMonth() + 1).toString().padStart(2, 0);
+
+            // Save the selected month to sessionStorage
+            sessionStorage.setItem('selectedMonth', field.value);
+        }
+    }
+
+    // Check if the search button is clicked
+    document.querySelector('.btn-primary').addEventListener('click', function () {
+        // Save the selected month to sessionStorage
+        sessionStorage.setItem('selectedMonth', field.value);
+    });
+</script>
+<div class="card-body" style="margin-left:5px;margin-right:5px">
+    <div class="table-responsive">
+        <table class="table table-bordered">
+            <thead>
+                <tr style="background-color:#f6933efc;">
+                    <th rowspan="2">
+                        Ngày làm viêc
+                    </th>
+                    <th rowspan="2">
+                        Thứ
+                    </th>
+                    <th rowspan="2">
+                        Mã nhân viên
+
+                    </th>
+                    <th rowspan="2">
+                        Họ và tên
+
+                    </th>
+                    <th rowspan="2">
+                        Bộ phận
+
+                    </th>
+
+                    <th rowspan="2">
+                        Trạng thái làm việc
+
+                    </th>
+                    <th rowspan="2">
+                        Ca làm
+                    </th>
+
+                    <th colspan="3">
+                       Thời gian làm việc
+                    </th>
+                    <th colspan="6">
+                       Kế hoạch tăng ca
+                    </th>
+
+       @*             <th rowspan="2">
+                        Next(Y/N)
+
+                    </th>
+                    <th rowspan="2">
+                        Night(Y/N)
+                    </th>*@
+
+                </tr>
+                <tr>
+                    <th>Giờ bắt đầu làm </th>
+                    <th>Giờ kết thúc làm</th>
+                    <th>Số giờ đi muộn về sớm</th>
+                    <th>Tăng ca đi làm sớm</th>
+                    <th> Kết thúc tăng ca đi làm sớm</th>
+                    <th> Tăng ca sau làm</th>
+                    <th> Kết thúc tăng ca</th>
+                    <th> Thông ca giờ nghỉ(Y/N)</th>
+                    <th> Thông ca giờ ăn</th>
+                </tr>
+            </thead>
+            <tbody>
+                @if (Model.StatusList != null)
+                {
+                    foreach (var name in Model.StatusList)
+                    {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => name.Workdate)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => name.Week)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => name.Personbumber)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => name.Username)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => name.Workcenter)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => name.Dutyname)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => name.Holyname)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => name.Opentime)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => name.Closetime)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => name.leaveTime)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => name.BeforeStart)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => name.BeforeEnd)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => name.AfterStart)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => name.AfterEnd)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => name.Restot)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => name.Breakfast)
+                    </td>
+                    @*   <td>
+            @Html.DisplayFor(modelItem => name.Next)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => name.AllNight)
+        </td>*@
+                </tr>
+                    }
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+
+
+<h3 style="color: #990000; font-size: 30px; margin: 0; font-weight: bold; text-transform: uppercase; padding:5px">Tổng số hàng tháng</h3>
+<div class="card-body" style="margin-left:5px;margin-right:5px">
+    <div class="table-responsive">
+        <table class="table table-bordered">
+            <thead>
+                <tr style="background-color:#f6933efc;">
+
+                    <th rowspan="2">
+                        Tháng
+
+                    <th rowspan="2">
+                        Mã nhân viên
+                    </th>
+                    <th rowspan="2">
+                        Họ và tên
+
+                    </th>
+                    <th rowspan="2">
+                        Số ngày công
+
+                    </th>
+
+                    <th rowspan="2">
+                        Số ngày nghỉ không lương
+
+                    </th>
+                    <th rowspan="2">
+                        OT ca ngày (150%)
+
+                    </th>
+
+                    <th rowspan="2">
+                        OT ca ngày(210%)
+
+                    </th>
+                    <th rowspan="2">
+                        OT ca đêm (200%)
+
+                    </th>
+                    <th rowspan="2">
+                        OT ca đêm (215%)
+
+                    </th>
+                    <th rowspan="2">
+                        TC ca đêm(30%)
+
+                    </th>
+                    <th rowspan="2">
+                        OT ca ngày CN(200%)
+
+                    </th>
+                    <th rowspan="2">
+                        OT ca đêm CN(240%)
+
+                    </th>
+
+                    <th rowspan="2">
+                        OT ca đêm CN(270%)
+
+                    </th>
+                    <th rowspan="2">
+                        OT ca ngày Lễ(300%)
+
+                    </th>
+                    <th rowspan="2">
+                        OT ca đêm Lễ(390%)
+                    </th>
+
+
+                </tr>
+
+            </thead>
+            <tbody>
+                @if (Model.TotalList != null)
+                {
+                    foreach (var item in Model.TotalList)
+                    {
+                <tr>
+                    @*<td>
+            @Html.DisplayFor(modelItem => item.Total)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.person_id)
+        </td>*@
+                    <td>
+                        @Html.DisplayFor(modelItem => item.monthSearch)
+                    </td>
+
+                    <td>
+                        @Html.DisplayFor(modelItem => item.person_number)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.name)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.TOTAL_ATT_DAY)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.TOTAL_DED_DAY)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.OT_150)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.OT_210)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.HOLY_0_200)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.NGITH_215)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.NIGHT_BONUS_30)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.HOLY_D_200)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.HOLY_0_240)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.HOLY_0_270)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.N_HOLY_300)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.N_HOLY_390)
+                    </td>
+
+                </tr>
+                    }
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+
+

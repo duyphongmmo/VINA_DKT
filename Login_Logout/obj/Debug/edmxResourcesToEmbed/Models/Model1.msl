@@ -1,0 +1,45 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="ModelStoreContainer" CdmEntityContainer="Entities2">
+    <EntitySetMapping Name="TC_COMMON">
+      <EntityTypeMapping TypeName="Model.TC_COMMON">
+        <MappingFragment StoreEntitySet="TC_COMMON">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="CODE" ColumnName="CODE" />
+          <ScalarProperty Name="NAME" ColumnName="NAME" />
+          <ScalarProperty Name="PARENT_ID" ColumnName="PARENT_ID" />
+          <ScalarProperty Name="REMARK" ColumnName="REMARK" />
+          <ScalarProperty Name="SORT_INDEX" ColumnName="SORT_INDEX" />
+          <ScalarProperty Name="USE_YN" ColumnName="USE_YN" />
+          <ScalarProperty Name="DEFAULT_YN" ColumnName="DEFAULT_YN" />
+          <ScalarProperty Name="USER_DEFINE" ColumnName="USER_DEFINE" />
+          <ScalarProperty Name="INSERT_TIME" ColumnName="INSERT_TIME" />
+          <ScalarProperty Name="INSERT_USER" ColumnName="INSERT_USER" />
+          <ScalarProperty Name="UPDATE_TIME" ColumnName="UPDATE_TIME" />
+          <ScalarProperty Name="UPDATE_USER" ColumnName="UPDATE_USER" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TC_USER">
+      <EntityTypeMapping TypeName="Model.TC_USER">
+        <MappingFragment StoreEntitySet="TC_USER">
+          <ScalarProperty Name="USER_ID" ColumnName="USER_ID" />
+          <ScalarProperty Name="USER_CODE" ColumnName="USER_CODE" />
+          <ScalarProperty Name="USER_NAME" ColumnName="USER_NAME" />
+          <ScalarProperty Name="PASS_WORD" ColumnName="PASS_WORD" />
+          <ScalarProperty Name="ENGLISH_NAME" ColumnName="ENGLISH_NAME" />
+          <ScalarProperty Name="PLANT_ID" ColumnName="PLANT_ID" />
+          <ScalarProperty Name="DEPT_ID" ColumnName="DEPT_ID" />
+          <ScalarProperty Name="DUTY_ID" ColumnName="DUTY_ID" />
+          <ScalarProperty Name="LANG_ID" ColumnName="LANG_ID" />
+          <ScalarProperty Name="USE_YN" ColumnName="USE_YN" />
+          <ScalarProperty Name="INSERT_TIME" ColumnName="INSERT_TIME" />
+          <ScalarProperty Name="INSERT_USER" ColumnName="INSERT_USER" />
+          <ScalarProperty Name="UPDATE_TIME" ColumnName="UPDATE_TIME" />
+          <ScalarProperty Name="UPDATE_USER" ColumnName="UPDATE_USER" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="GET_TIME_STAMP" FunctionName="Model.Store.GET_TIME_STAMP" />
+  </EntityContainerMapping>
+</Mapping>

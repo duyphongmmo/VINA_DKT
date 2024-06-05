@@ -1,0 +1,17 @@
+﻿form
+{
+    padding: 15px 0
+}
+#input {
+    margin-left: 20px;
+    border-radius: 7px;
+    border: 1px solid;
+    width: 20%;
+}
+#submit {
+    background-color: aqua;
+    color: white;
+    border-radius: 7px;
+    border: 1px solid #000;
+    width: 5%;
+}

@@ -1,0 +1,115 @@
+﻿@{
+    ViewBag.Title = "Dashboard";
+    Layout = "~/Views/Shared/_LayoutAccessManage.cshtml";
+}
+@section styles {
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap">
+    <link href="~/Assets/AccessMange/css/dashboard.css" rel="stylesheet" />
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+        }
+
+        table {
+            border-collapse: collapse;
+        }
+
+            table th {
+                background-color: #3b7ebb;
+                color: #fff;
+            }
+
+        th, td {
+            border: 1px solid #000000 !important;
+        }
+    </style>
+
+}
+<div class="card shadow mb-4 p-2">
+    <button type="button" class="btn btn-primary btn-sm" style="background-color: var(--bs-blue); width: fit-content;"
+            data-toggle="tooltip" data-placement="left" title="Tooltip on left"
+            onclick="location.href='@Request.Url.PathAndQuery'">
+        <i class="fas fa-sync-alt"></i>
+    </button>
+</div>
+<div class="card shadow mb-4 p-4 position-relative">
+    <!-- Loading -->
+
+
+    <div class="">
+        <h3>Báo cáo nhân lực</h3>
+    </div>
+
+    <div class="d-flex justify-content-center p-3">
+        <div style="width:70%;"><canvas id="line-chart"></canvas></div>
+    </div>
+
+    <div class="mt-5">
+        <table class="table">
+            <tbody>
+                <tr>
+                    <th scope="col" class="text-center" colspan="2">Phân biệt</th>
+                    <th scope="col">24 년</th>
+                    <th scope="col">2 분기</th>
+                </tr>
+                <tr>
+                    <td rowspan="3" style="width:60px" class="text-center">
+                        CNV
+                    </td>
+                    <td class="text-center">Staff</td>
+                    <td>10</td>
+                    <td>9</td>
+                </tr>
+                <tr>
+                    <td class="text-center">Part leader</td>
+                    <td>5</td>
+                    <td>6</td>
+                </tr>
+                <tr>
+                    <td class="text-center">Team leader</td>
+                    <td>8</td>
+                    <td>9</td>
+                </tr>
+                <tr class="bg-table1">
+                    <td rowspan="6" class="text-center" style="padding: 77px 0; background-color: #7fcd9b;">Tổng cộng</td>
+                    <td class="text-center">Total nghỉ làm</td>
+                    <td>9</td>
+                    <td>10</td>
+                </tr>
+                <tr class="bg-table1">
+                    <td class="text-center">Tăng ca</td>
+                    <td>9</td>
+                    <td>10</td>
+                </tr>
+                <tr class="bg-table1">
+                    <td class="text-center">Tỉ lệ tăng ca</td>
+                    <td>9</td>
+                    <td>10</td>
+                </tr>
+                <tr class="bg-table1">
+                    <td class="text-center">Đi làm</td>
+                    <td>9</td>
+                    <td>10</td>
+                </tr>
+                <tr class="bg-table1">
+                    <td class="text-center">Tỉ lệ % nghỉ</td>
+                    <td>9</td>
+                    <td>10</td>
+                </tr>
+                <tr class="bg-table1">
+                    <td class="text-center">Tỉ lệ % đi làm</td>
+                    <td>9</td>
+                    <td>10</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<!-- Page level custom scripts -->
+@section scripts {
+    <script refer src="~/Assets/AccessMange/vendor/chart.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.2.0/dist/chartjs-plugin-datalabels.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/moment@2.30.1/moment.min.js"></script>
+    <script src="~/Assets/AccessMange/js/humanrp.js"></script>
+}

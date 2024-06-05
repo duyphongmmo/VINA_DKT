@@ -1,0 +1,577 @@
+﻿@model Login_Logout.Models.AllSalary
+
+@{
+    ViewBag.Title = "AllSalary";
+    Layout = "~/Views/Shared/_LayoutTable.cshtml";
+}
+<head>
+    <style>
+        table, td, th {
+            border: 1px solid green;
+            width: auto;
+            font-size: 12px;
+        }
+
+        table {
+            border-collapse: collapse;
+            border: 1px;
+        }
+
+        td, th {
+            padding: 10px;
+        }
+
+        th {
+            background-color: #f6933efc;
+            color: white;
+            text-align: center;
+            font-size: 12px;
+        }
+
+        td {
+            text-align: center;
+            font-size: 10px;
+        }
+
+        .table thead th {
+            vertical-align: middle;
+        }
+
+        input[type=text] {
+            transition: width 0.4s ease-in-out;
+        }
+
+        .style-padding-col {
+            margin-bottom: 5px;
+        }
+    </style>
+</head>
+
+@using (Html.BeginForm("IndexEmp", "Home", FormMethod.Get, new { @class = "d-none d-sm-inline-block form-inline mw-100 navbar-search row", @style = " font-size:12px" }))
+{
+    <div class="row" style="margin:unset;padding-top:5px;margin-left:5px">
+        <div class="col-md-2 style-padding-col">
+            <a class="btn button" style="background-color: #6e707e;padding: 6px 7px;display: inline-block;border: none;border-radius: 7px;color: white;">
+                Monthly Inquiry
+            </a>
+        </div>
+        <div class="col-md-3 style-padding-col">
+            <input style="box-sizing: border-box;border: 2px solid #ccc;border-radius: 7px;font-size: 13px;background-color: #3CBC8D;
+                 color: teal;" type="month" name="Month" id="today" class="form-control bg-light border-0 small viewport-input" placeholder="08/06/2020" />
+        </div>
+
+        <div class="col-md-2 style-padding-col">
+            <button class="btn btn-primary" type="submit" style="background-color: SeaGreen;padding: 6px 17px;display: inline-block;border: none;border-radius: 7px;">
+                <i class="fas fa-search"></i> Search
+            </button>
+        </div>
+        <div class="col-md-2 style-padding-col"></div>
+    </div>
+
+}
+<script>
+    var isDateSupported = function () {
+        var input = document.createElement('input');
+        input.setAttribute('type', 'date');
+        input.setAttribute('value', 'x');
+        return (input.value !== 'x');
+    };
+    // Variables
+    var field = document.querySelector('#today');
+    var date = new Date();
+    // If [type="date"] is supported, update the DOM
+    if (isDateSupported()) {
+        // Remove attributes
+        field.removeAttribute('pattern');
+        field.removeAttribute('placeholder');
+        // Remove the helper text
+        var helperText = document.querySelector('[for="today"] .description');
+        if (helperText) {
+            helperText.parentNode.removeChild(helperText);
+        }
+    }
+    // Set the value
+    field.value = date.getFullYear().toString() + '-' + (date.getMonth() + 1).toString().padStart(2, 0);
+</script>
+<div>
+    <form style="width:100%">
+        <div class="card-body" style="margin-left:5px;margin-right:5px">
+            <div class="table-responsive">
+                <table class="table table-bordered">
+                    <thead>
+                        <tr >
+                            <th rowspan="2">
+                                Month
+                            </th>
+                            <th rowspan="2">
+                              
+                                Person 
+                            </th>
+                            <th rowspan="2">
+                                Name
+                            </th>
+                            <th rowspan="2">
+                                Base
+                            </th>
+                            <th rowspan="2">
+                                Position
+                            </th>
+                            <th rowspan="2">
+                                Phuc
+                            </th>
+                            <th rowspan="2">
+                                Gasoline
+
+                            </th>
+                            <th rowspan="2">
+                                Atitendane
+
+                            </th>
+                            <th rowspan="2">
+
+                                Evaluating
+
+                            </th>
+                            <th rowspan="2">
+                                Thuong
+                            </th>
+                            <th rowspan="2">
+                                Quan Ao
+                            </th>
+                            <th rowspan="2">
+                                Hardship
+                            </th>
+                            <th rowspan="2">
+                                Duty
+                            </th>
+                            <th rowspan="2">
+                                Fire
+                            </th>
+                            <th rowspan="2">
+                                Bonus
+                            </th>
+                            <th rowspan="2">
+                                Year Holiday
+                            </th>
+                        </tr>
+                    </thead>
+                    @if (Model.ListSalary != null)
+                    {
+                        foreach (var item in Model.ListSalary)
+                        {
+                            <tr>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Month)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Mumber)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.name)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.basesalary)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.position)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.libing)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.gasoline)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.attendance)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.evaluating)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.thuong)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.quanao)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.hardship)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.duty)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.fire)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Bouns)
+                                </td>
+
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.yearholiday)
+                                </td>
+
+                            </tr>
+                        }
+
+                    }
+
+                </table>
+                <table class="table table-bordered">
+                    <thead>
+                        <tr >
+                            <th rowspan="2">
+                                Telephone
+                            </th>
+                            <th rowspan="2">
+                                Other
+                            </th>
+                            <th rowspan="2">
+                                Normal
+                                (150%)
+                            </th>
+                            <th rowspan="2">
+                                Over
+                                (195%)
+                            </th>
+                            <th rowspan="2">
+                                Night time
+                                (215%)
+                            </th>
+                            <th rowspan="2">
+                                Weekly
+                                (200%)
+
+                            </th>
+                            <th rowspan="2">
+                                Night weekly
+                                (260%)
+                            </th>
+                            <th rowspan="2">
+                                Holiday
+                                (300%)
+                            </th>
+                            <th rowspan="2">
+                                Night holiday
+                                (390%)
+                            </th>
+                            <th rowspan="2">
+                                Night work
+                                (30%)
+                            </th>
+                            <th rowspan="2">
+                                Phuc
+                            </th>
+                            <th rowspan="2">
+                                Nigh Workadd
+
+                            </th>
+                            <th rowspan="2">
+                                Language
+                            </th>
+                            <th rowspan="2">
+                                Salary Adjust
+                            </th>
+                            <th rowspan="2">
+                                Working ded
+                            </th>
+                            <th rowspan="2">
+                                All wance
+                            </th>
+                        </tr>
+                    </thead>
+                    @if (Model.ListSalary != null)
+                    {
+                        foreach (var item in Model.ListSalary)
+                        {
+                            <tr>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.telephone)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.other)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.normal150)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Over195)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.night215)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.weekly200)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.nighweekly260)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.holiday300)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.nightholiday390)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.nighwork30)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.phuc)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.nighthworkadd)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.language)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.salaryadjust)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.workingded)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.esallwance)
+                                </td>
+
+                            </tr>
+                        }
+                    }
+                </table>
+            </div>
+        </div>
+    </form>
+    <h6 style="color: #990000; font-size: 25px; margin: 0; font-weight: bold; text-transform: uppercase; padding:5px">Deduction</h6>
+    <form style="width:100%">
+        <div class="card-body" style="margin-left:5px;margin-right:5px">
+            <div class="table-responsive">
+                <table style="width:60%">
+                    <thead>
+                        <tr>
+                          
+                            <th>
+                                Social BHXH
+                            </th>
+                            <th >
+                                Unemployed BHTN
+
+                            </th>
+                            <th>
+                                Medical BHYT
+                            </th>
+                            <th>
+                                Income Tax
+
+                            </th>
+                            <th rowspan="2">
+                                Union AMT
+                            </th>
+                            <th >
+                                Other ded
+                            </th>
+                        </tr>
+                    </thead>
+                    @if (Model.ListSalary != null)
+                    {
+                        foreach (var item in Model.ListSalary)
+                        {
+                            <tr>
+                               
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.socialbhxh)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.unemployedbhtn)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.medicalbhyt)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.incometax)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.unionamt)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.otherded)
+                                </td>
+
+                            </tr>
+                        }
+                    }
+                </table>
+            </div>
+        </div>
+    </form>
+
+    <h6 style="color: #990000; font-size: 25px; margin: 0; font-weight: bold; text-transform: uppercase; padding:5px">Total</h6>
+
+    <form style="width:100%">
+        <div class="card-body" style="margin-left:5px;margin-right:5px">
+            <div class="table-responsive">
+                <table style="width:30%">
+                    <thead>
+                        <tr >
+                            <th >
+                                Total Supply Amount
+                            </th>
+                            <th >
+                                Total  Ded Amount
+
+                            </th>
+                            <th>
+                                Real Amount
+                            </th>
+
+                        </tr>.
+                    </thead>
+                    @if (Model.ListSalary != null)
+                    {
+                        foreach (var item in Model.ListSalary)
+                        {
+                            <tr>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.totsupplyamount)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.totdedamount)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.realamount)
+                                </td>
+                            </tr>
+                        }
+                    }
+                </table>
+            </div>
+        </div>
+    </form>
+
+
+    <h6 style="color: #990000; font-size: 25px; margin: 0; font-weight: bold; text-transform: uppercase; padding:5px">Standard Wages</h6>
+    <form style="width:100%">
+        <div class="card-body" style="margin-left:5px;margin-right:5px">
+            <div class="table-responsive">
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th rowspan="2">
+                                Person
+                            </th>
+                            <th rowspan="2">
+                                Name
+                            </th>
+                            <th rowspan="2">
+                                Base
+                            </th>
+                            <th rowspan="2">
+                                Position
+                            </th>
+                            <th rowspan="2">
+                                Phuc
+                            </th>
+                            <th rowspan="2">
+                                Gasoline
+                            </th>
+                            <th rowspan="2">
+                                Attendance
+                            </th>
+                            <th rowspan="2">
+                                Evaluating inspector
+                            </th>
+                            <th rowspan="2">
+                                Quan Ao
+                            </th>
+                            <th rowspan="2">
+                                HardShip
+                            </th>
+                            <th rowspan="2">
+                                Duty Allowance
+                            </th>
+                            <th rowspan="2">
+                                Fire Allowance
+                            </th>
+                            <th rowspan="2">
+                                Bouns
+                            </th>
+                            <th rowspan="2">
+                                Telephone
+                            </th>
+                            <th rowspan="2">
+                                Total
+                            </th>
+                        </tr>
+                    </thead>
+                    @if (Model.ListBase != null)
+                    {
+                        foreach (var item in Model.ListBase)
+                        {
+                            <tr>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.number)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.name)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Base)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Position)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.phuc)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.gasoline)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Attendance)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Inspector)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.quanao)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Hardship)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Dytyallowance)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Fireallowance)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Bonus)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.telephone)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Total)
+                                </td>
+                            </tr>
+                        }
+                    }
+                </table>
+            </div>
+        </div>
+    </form>
+
+    @{
+        if (TempData["msg"] != null)
+        {
+            <script type="text/javascript">
+                alert('@TempData["msg"]');
+            </script>
+        }
+    }
+    @if (TempData["msg1"] != null)
+    {
+        <script language="javascript">
+            confirm("Last month's salary opens after the 10th of every month");
+        </script>
+    }
+</div>
+

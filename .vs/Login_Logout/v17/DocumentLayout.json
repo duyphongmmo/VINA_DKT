@@ -1,0 +1,341 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "E:\\HRM\\Web_Dkt_New\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{68A2D6A1-3CA6-4B49-8E9A-13D2DFCAA1EC}|Login_Logout\\Login_Logout.csproj|e:\\hrm\\web_dkt_new\\login_logout\\views\\accessmanage\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{68A2D6A1-3CA6-4B49-8E9A-13D2DFCAA1EC}|Login_Logout\\Login_Logout.csproj|solutionrelative:login_logout\\views\\accessmanage\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{68A2D6A1-3CA6-4B49-8E9A-13D2DFCAA1EC}|Login_Logout\\Login_Logout.csproj|E:\\HRM\\Web_Dkt_New\\login_logout\\models\\userloginfo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{68A2D6A1-3CA6-4B49-8E9A-13D2DFCAA1EC}|Login_Logout\\Login_Logout.csproj|solutionrelative:login_logout\\models\\userloginfo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{68A2D6A1-3CA6-4B49-8E9A-13D2DFCAA1EC}|Login_Logout\\Login_Logout.csproj|E:\\HRM\\Web_Dkt_New\\login_logout\\controllers\\userlogincontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{68A2D6A1-3CA6-4B49-8E9A-13D2DFCAA1EC}|Login_Logout\\Login_Logout.csproj|solutionrelative:login_logout\\controllers\\userlogincontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{68A2D6A1-3CA6-4B49-8E9A-13D2DFCAA1EC}|Login_Logout\\Login_Logout.csproj|E:\\HRM\\Web_Dkt_New\\login_logout\\controllers\\accessmanagecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{68A2D6A1-3CA6-4B49-8E9A-13D2DFCAA1EC}|Login_Logout\\Login_Logout.csproj|solutionrelative:login_logout\\controllers\\accessmanagecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{68A2D6A1-3CA6-4B49-8E9A-13D2DFCAA1EC}|Login_Logout\\Login_Logout.csproj|E:\\HRM\\Web_Dkt_New\\login_logout\\helper\\dbmextension.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{68A2D6A1-3CA6-4B49-8E9A-13D2DFCAA1EC}|Login_Logout\\Login_Logout.csproj|solutionrelative:login_logout\\helper\\dbmextension.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{68A2D6A1-3CA6-4B49-8E9A-13D2DFCAA1EC}|Login_Logout\\Login_Logout.csproj|E:\\HRM\\Web_Dkt_New\\login_logout\\helper\\extensionmethod.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{68A2D6A1-3CA6-4B49-8E9A-13D2DFCAA1EC}|Login_Logout\\Login_Logout.csproj|solutionrelative:login_logout\\helper\\extensionmethod.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{68A2D6A1-3CA6-4B49-8E9A-13D2DFCAA1EC}|Login_Logout\\Login_Logout.csproj|E:\\HRM\\Web_Dkt_New\\login_logout\\helper\\dbm.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{68A2D6A1-3CA6-4B49-8E9A-13D2DFCAA1EC}|Login_Logout\\Login_Logout.csproj|solutionrelative:login_logout\\helper\\dbm.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{68A2D6A1-3CA6-4B49-8E9A-13D2DFCAA1EC}|Login_Logout\\Login_Logout.csproj|E:\\HRM\\Web_Dkt_New\\login_logout\\helper\\commons.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{68A2D6A1-3CA6-4B49-8E9A-13D2DFCAA1EC}|Login_Logout\\Login_Logout.csproj|solutionrelative:login_logout\\helper\\commons.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{68A2D6A1-3CA6-4B49-8E9A-13D2DFCAA1EC}|Login_Logout\\Login_Logout.csproj|E:\\HRM\\Web_Dkt_New\\login_logout\\service\\accessmanageservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{68A2D6A1-3CA6-4B49-8E9A-13D2DFCAA1EC}|Login_Logout\\Login_Logout.csproj|solutionrelative:login_logout\\service\\accessmanageservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{68A2D6A1-3CA6-4B49-8E9A-13D2DFCAA1EC}|Login_Logout\\Login_Logout.csproj|E:\\HRM\\Web_Dkt_New\\login_logout\\views\\shared\\_layoutaccessmanage.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{68A2D6A1-3CA6-4B49-8E9A-13D2DFCAA1EC}|Login_Logout\\Login_Logout.csproj|solutionrelative:login_logout\\views\\shared\\_layoutaccessmanage.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{68A2D6A1-3CA6-4B49-8E9A-13D2DFCAA1EC}|Login_Logout\\Login_Logout.csproj|E:\\HRM\\Web_Dkt_New\\login_logout\\views\\accessmanage\\guestin.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{68A2D6A1-3CA6-4B49-8E9A-13D2DFCAA1EC}|Login_Logout\\Login_Logout.csproj|solutionrelative:login_logout\\views\\accessmanage\\guestin.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{68A2D6A1-3CA6-4B49-8E9A-13D2DFCAA1EC}|Login_Logout\\Login_Logout.csproj|E:\\HRM\\Web_Dkt_New\\login_logout\\views\\userlogin\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{68A2D6A1-3CA6-4B49-8E9A-13D2DFCAA1EC}|Login_Logout\\Login_Logout.csproj|solutionrelative:login_logout\\views\\userlogin\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{68A2D6A1-3CA6-4B49-8E9A-13D2DFCAA1EC}|Login_Logout\\Login_Logout.csproj|E:\\HRM\\Web_Dkt_New\\login_logout\\assets\\accessmange\\css\\acesss-manage.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
+      "RelativeMoniker": "D:0:0:{68A2D6A1-3CA6-4B49-8E9A-13D2DFCAA1EC}|Login_Logout\\Login_Logout.csproj|solutionrelative:login_logout\\assets\\accessmange\\css\\acesss-manage.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{68A2D6A1-3CA6-4B49-8E9A-13D2DFCAA1EC}|Login_Logout\\Login_Logout.csproj|E:\\HRM\\Web_Dkt_New\\login_logout\\app_start\\routeconfig.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{68A2D6A1-3CA6-4B49-8E9A-13D2DFCAA1EC}|Login_Logout\\Login_Logout.csproj|solutionrelative:login_logout\\app_start\\routeconfig.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{68A2D6A1-3CA6-4B49-8E9A-13D2DFCAA1EC}|Login_Logout\\Login_Logout.csproj|E:\\HRM\\Web_Dkt_New\\login_logout\\models\\dutymodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{68A2D6A1-3CA6-4B49-8E9A-13D2DFCAA1EC}|Login_Logout\\Login_Logout.csproj|solutionrelative:login_logout\\models\\dutymodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{68A2D6A1-3CA6-4B49-8E9A-13D2DFCAA1EC}|Login_Logout\\Login_Logout.csproj|E:\\HRM\\Web_Dkt_New\\login_logout\\assets\\accessmange\\js\\acscript.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
+      "RelativeMoniker": "D:0:0:{68A2D6A1-3CA6-4B49-8E9A-13D2DFCAA1EC}|Login_Logout\\Login_Logout.csproj|solutionrelative:login_logout\\assets\\accessmange\\js\\acscript.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{68A2D6A1-3CA6-4B49-8E9A-13D2DFCAA1EC}|Login_Logout\\Login_Logout.csproj|E:\\HRM\\Web_Dkt_New\\login_logout\\views\\accessmanage\\indexout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{68A2D6A1-3CA6-4B49-8E9A-13D2DFCAA1EC}|Login_Logout\\Login_Logout.csproj|solutionrelative:login_logout\\views\\accessmanage\\indexout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{68A2D6A1-3CA6-4B49-8E9A-13D2DFCAA1EC}|Login_Logout\\Login_Logout.csproj|E:\\HRM\\Web_Dkt_New\\login_logout\\views\\accessmanage\\dashboard.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{68A2D6A1-3CA6-4B49-8E9A-13D2DFCAA1EC}|Login_Logout\\Login_Logout.csproj|solutionrelative:login_logout\\views\\accessmanage\\dashboard.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{68A2D6A1-3CA6-4B49-8E9A-13D2DFCAA1EC}|Login_Logout\\Login_Logout.csproj|E:\\HRM\\Web_Dkt_New\\login_logout\\assets\\accessmange\\js\\humanrp.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
+      "RelativeMoniker": "D:0:0:{68A2D6A1-3CA6-4B49-8E9A-13D2DFCAA1EC}|Login_Logout\\Login_Logout.csproj|solutionrelative:login_logout\\assets\\accessmange\\js\\humanrp.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{68A2D6A1-3CA6-4B49-8E9A-13D2DFCAA1EC}|Login_Logout\\Login_Logout.csproj|E:\\HRM\\Web_Dkt_New\\login_logout\\assets\\accessmange\\js\\dashboard.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
+      "RelativeMoniker": "D:0:0:{68A2D6A1-3CA6-4B49-8E9A-13D2DFCAA1EC}|Login_Logout\\Login_Logout.csproj|solutionrelative:login_logout\\assets\\accessmange\\js\\dashboard.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 3,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "ExtensionMethod.cs",
+              "DocumentMoniker": "E:\\HRM\\Web_Dkt_New\\Login_Logout\\Helper\\ExtensionMethod.cs",
+              "RelativeDocumentMoniker": "Login_Logout\\Helper\\ExtensionMethod.cs",
+              "ToolTip": "E:\\HRM\\Web_Dkt_New\\Login_Logout\\Helper\\ExtensionMethod.cs",
+              "RelativeToolTip": "Login_Logout\\Helper\\ExtensionMethod.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAkAAAAmAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-04T01:19:38.215Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "DBMextension.cs",
+              "DocumentMoniker": "E:\\HRM\\Web_Dkt_New\\Login_Logout\\Helper\\DBMextension.cs",
+              "RelativeDocumentMoniker": "Login_Logout\\Helper\\DBMextension.cs",
+              "ToolTip": "E:\\HRM\\Web_Dkt_New\\Login_Logout\\Helper\\DBMextension.cs",
+              "RelativeToolTip": "Login_Logout\\Helper\\DBMextension.cs",
+              "ViewState": "AQIAAAsAAAAAAAAAAAAxwAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-04T01:19:07.964Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "Commons.cs",
+              "DocumentMoniker": "E:\\HRM\\Web_Dkt_New\\Login_Logout\\Helper\\Commons.cs",
+              "RelativeDocumentMoniker": "Login_Logout\\Helper\\Commons.cs",
+              "ToolTip": "E:\\HRM\\Web_Dkt_New\\Login_Logout\\Helper\\Commons.cs",
+              "RelativeToolTip": "Login_Logout\\Helper\\Commons.cs",
+              "ViewState": "AQIAACsAAAAAAAAAAAAgwEcAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-03T11:17:40.351Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "E:\\HRM\\Web_Dkt_New\\Login_Logout\\Views\\AccessManage\\Index.cshtml",
+              "RelativeDocumentMoniker": "Login_Logout\\Views\\AccessManage\\Index.cshtml",
+              "ToolTip": "E:\\HRM\\Web_Dkt_New\\Login_Logout\\Views\\AccessManage\\Index.cshtml",
+              "RelativeToolTip": "Login_Logout\\Views\\AccessManage\\Index.cshtml",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA0AAAABAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-05-21T08:24:27.099Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "AccessManageController.cs",
+              "DocumentMoniker": "E:\\HRM\\Web_Dkt_New\\Login_Logout\\Controllers\\AccessManageController.cs",
+              "RelativeDocumentMoniker": "Login_Logout\\Controllers\\AccessManageController.cs",
+              "ToolTip": "E:\\HRM\\Web_Dkt_New\\Login_Logout\\Controllers\\AccessManageController.cs",
+              "RelativeToolTip": "Login_Logout\\Controllers\\AccessManageController.cs",
+              "ViewState": "AQIAABoAAAAAAAAAAAAkwCUAAAAqAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-07T08:00:30.159Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "AccessManageService.cs",
+              "DocumentMoniker": "E:\\HRM\\Web_Dkt_New\\Login_Logout\\Service\\AccessManageService.cs",
+              "RelativeDocumentMoniker": "Login_Logout\\Service\\AccessManageService.cs",
+              "ToolTip": "E:\\HRM\\Web_Dkt_New\\Login_Logout\\Service\\AccessManageService.cs",
+              "RelativeToolTip": "Login_Logout\\Service\\AccessManageService.cs",
+              "ViewState": "AQIAAAYAAAAAAAAAAAAAAFcAAAA1AAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-30T04:46:24.041Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "E:\\HRM\\Web_Dkt_New\\Login_Logout\\Views\\UserLogin\\Index.cshtml",
+              "RelativeDocumentMoniker": "Login_Logout\\Views\\UserLogin\\Index.cshtml",
+              "ToolTip": "E:\\HRM\\Web_Dkt_New\\Login_Logout\\Views\\UserLogin\\Index.cshtml",
+              "RelativeToolTip": "Login_Logout\\Views\\UserLogin\\Index.cshtml",
+              "ViewState": "AQIAACEAAAAAAAAAAAAAAAMAAAASAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-05-30T04:17:10.959Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "_LayoutAccessManage.cshtml",
+              "DocumentMoniker": "E:\\HRM\\Web_Dkt_New\\Login_Logout\\Views\\Shared\\_LayoutAccessManage.cshtml",
+              "RelativeDocumentMoniker": "Login_Logout\\Views\\Shared\\_LayoutAccessManage.cshtml",
+              "ToolTip": "E:\\HRM\\Web_Dkt_New\\Login_Logout\\Views\\Shared\\_LayoutAccessManage.cshtml",
+              "RelativeToolTip": "Login_Logout\\Views\\Shared\\_LayoutAccessManage.cshtml",
+              "ViewState": "AQIAAIcAAAAAAAAAAAAAAD8AAAAiAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-05-30T04:08:23.416Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "UserLoginController.cs",
+              "DocumentMoniker": "E:\\HRM\\Web_Dkt_New\\Login_Logout\\Controllers\\UserLoginController.cs",
+              "RelativeDocumentMoniker": "Login_Logout\\Controllers\\UserLoginController.cs",
+              "ToolTip": "E:\\HRM\\Web_Dkt_New\\Login_Logout\\Controllers\\UserLoginController.cs",
+              "RelativeToolTip": "Login_Logout\\Controllers\\UserLoginController.cs",
+              "ViewState": "AQIAADwAAAAAAAAAAAAUwBsAAAAcAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-27T02:44:44.027Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "DutyModel.cs",
+              "DocumentMoniker": "E:\\HRM\\Web_Dkt_New\\Login_Logout\\Models\\DutyModel.cs",
+              "RelativeDocumentMoniker": "Login_Logout\\Models\\DutyModel.cs",
+              "ToolTip": "E:\\HRM\\Web_Dkt_New\\Login_Logout\\Models\\DutyModel.cs",
+              "RelativeToolTip": "Login_Logout\\Models\\DutyModel.cs",
+              "ViewState": "AQIAABEAAAAAAAAAAAA4wBUAAAAzAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-01T03:59:43.191Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "RouteConfig.cs",
+              "DocumentMoniker": "E:\\HRM\\Web_Dkt_New\\Login_Logout\\App_Start\\RouteConfig.cs",
+              "RelativeDocumentMoniker": "Login_Logout\\App_Start\\RouteConfig.cs",
+              "ToolTip": "E:\\HRM\\Web_Dkt_New\\Login_Logout\\App_Start\\RouteConfig.cs",
+              "RelativeToolTip": "Login_Logout\\App_Start\\RouteConfig.cs",
+              "ViewState": "AQIAAAoAAAAAAAAAAAAQwA8AAAAOAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-03T06:23:17.998Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "DBM.cs",
+              "DocumentMoniker": "E:\\HRM\\Web_Dkt_New\\Login_Logout\\Helper\\DBM.cs",
+              "RelativeDocumentMoniker": "Login_Logout\\Helper\\DBM.cs",
+              "ToolTip": "E:\\HRM\\Web_Dkt_New\\Login_Logout\\Helper\\DBM.cs",
+              "RelativeToolTip": "Login_Logout\\Helper\\DBM.cs",
+              "ViewState": "AQIAAFAAAAAAAAAAAAArwC8AAAALAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-25T03:52:34.597Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 15,
+              "Title": "acscript.js",
+              "DocumentMoniker": "E:\\HRM\\Web_Dkt_New\\Login_Logout\\Assets\\AccessMange\\js\\acscript.js",
+              "RelativeDocumentMoniker": "Login_Logout\\Assets\\AccessMange\\js\\acscript.js",
+              "ToolTip": "E:\\HRM\\Web_Dkt_New\\Login_Logout\\Assets\\AccessMange\\js\\acscript.js",
+              "RelativeToolTip": "Login_Logout\\Assets\\AccessMange\\js\\acscript.js",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABgAAAAHAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
+              "WhenOpened": "2024-05-23T00:54:57.19Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "UserLogInfo.cs",
+              "DocumentMoniker": "E:\\HRM\\Web_Dkt_New\\Login_Logout\\Models\\UserLogInfo.cs",
+              "RelativeDocumentMoniker": "Login_Logout\\Models\\UserLogInfo.cs",
+              "ToolTip": "E:\\HRM\\Web_Dkt_New\\Login_Logout\\Models\\UserLogInfo.cs",
+              "RelativeToolTip": "Login_Logout\\Models\\UserLogInfo.cs",
+              "ViewState": "AQIAAB8AAAAAAAAAAAA0wCUAAABvAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-22T11:27:44.346Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "GuestIn.cshtml",
+              "DocumentMoniker": "E:\\HRM\\Web_Dkt_New\\Login_Logout\\Views\\AccessManage\\GuestIn.cshtml",
+              "RelativeDocumentMoniker": "Login_Logout\\Views\\AccessManage\\GuestIn.cshtml",
+              "ToolTip": "E:\\HRM\\Web_Dkt_New\\Login_Logout\\Views\\AccessManage\\GuestIn.cshtml",
+              "RelativeToolTip": "Login_Logout\\Views\\AccessManage\\GuestIn.cshtml",
+              "ViewState": "AQIAAAQBAAAAAAAAAAAAABIBAABoAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-05-11T03:07:56.711Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 19,
+              "Title": "dashboard.js",
+              "DocumentMoniker": "E:\\HRM\\Web_Dkt_New\\Login_Logout\\Assets\\AccessMange\\js\\dashboard.js",
+              "RelativeDocumentMoniker": "Login_Logout\\Assets\\AccessMange\\js\\dashboard.js",
+              "ToolTip": "E:\\HRM\\Web_Dkt_New\\Login_Logout\\Assets\\AccessMange\\js\\dashboard.js",
+              "RelativeToolTip": "Login_Logout\\Assets\\AccessMange\\js\\dashboard.js",
+              "ViewState": "AQIAAIgAAAAAAAAAAAAgwJwAAAAEAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
+              "WhenOpened": "2024-05-18T04:03:24.374Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 17,
+              "Title": "Dashboard.cshtml",
+              "DocumentMoniker": "E:\\HRM\\Web_Dkt_New\\Login_Logout\\Views\\AccessManage\\Dashboard.cshtml",
+              "RelativeDocumentMoniker": "Login_Logout\\Views\\AccessManage\\Dashboard.cshtml",
+              "ToolTip": "E:\\HRM\\Web_Dkt_New\\Login_Logout\\Views\\AccessManage\\Dashboard.cshtml",
+              "RelativeToolTip": "Login_Logout\\Views\\AccessManage\\Dashboard.cshtml",
+              "ViewState": "AQIAAAYAAAAAAAAAAAAAABcAAABaAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-05-18T03:57:42.127Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "acesss-manage.css",
+              "DocumentMoniker": "E:\\HRM\\Web_Dkt_New\\Login_Logout\\Assets\\AccessMange\\css\\acesss-manage.css",
+              "RelativeDocumentMoniker": "Login_Logout\\Assets\\AccessMange\\css\\acesss-manage.css",
+              "ToolTip": "E:\\HRM\\Web_Dkt_New\\Login_Logout\\Assets\\AccessMange\\css\\acesss-manage.css",
+              "RelativeToolTip": "Login_Logout\\Assets\\AccessMange\\css\\acesss-manage.css",
+              "ViewState": "AQIAAKQAAAAAAAAAAADgv7IAAAAYAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
+              "WhenOpened": "2024-05-14T07:31:12.342Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 16,
+              "Title": "IndexOut.cshtml",
+              "DocumentMoniker": "E:\\HRM\\Web_Dkt_New\\Login_Logout\\Views\\AccessManage\\IndexOut.cshtml",
+              "RelativeDocumentMoniker": "Login_Logout\\Views\\AccessManage\\IndexOut.cshtml",
+              "ToolTip": "E:\\HRM\\Web_Dkt_New\\Login_Logout\\Views\\AccessManage\\IndexOut.cshtml",
+              "RelativeToolTip": "Login_Logout\\Views\\AccessManage\\IndexOut.cshtml",
+              "ViewState": "AQIAADMAAAAAAAAAAAAAADEAAABAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-05-17T03:05:00.252Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 18,
+              "Title": "humanrp.js",
+              "DocumentMoniker": "E:\\HRM\\Web_Dkt_New\\Login_Logout\\Assets\\AccessMange\\js\\humanrp.js",
+              "RelativeDocumentMoniker": "Login_Logout\\Assets\\AccessMange\\js\\humanrp.js",
+              "ToolTip": "E:\\HRM\\Web_Dkt_New\\Login_Logout\\Assets\\AccessMange\\js\\humanrp.js",
+              "RelativeToolTip": "Login_Logout\\Assets\\AccessMange\\js\\humanrp.js",
+              "ViewState": "AQIAABcAAAAAAAAAAAAAAB8AAAAVAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
+              "WhenOpened": "2024-05-17T02:09:40.904Z"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

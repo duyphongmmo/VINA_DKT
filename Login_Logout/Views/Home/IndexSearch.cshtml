@@ -1,0 +1,364 @@
+﻿@model Login_Logout.Models.Response
+@{
+    ViewBag.Title = "IndexSearch";
+    Layout = "~/Views/Shared/_LayoutTable.cshtml";
+}
+<head>
+    <style>
+        table, td, th {
+            border: 1px solid green;
+            width: auto;
+            font-size: 12px;
+        }
+
+        table {
+            border-collapse: collapse;
+            border: 1px;
+        }
+
+        td, th {
+            padding: 10px;
+        }
+
+        th {
+            background-color: #f6933efc;
+            color: white;
+            text-align: center;
+            font-size: 12px;
+        }
+
+        td {
+            text-align: center;
+            font-size: 10px;
+        }
+
+        .table thead th {
+            vertical-align: middle;
+        }
+
+        input[type=text] {
+            transition: width 0.4s ease-in-out;
+        }
+        .style-padding-col{
+            margin-bottom: 5px;
+        }
+    </style>
+</head>
+
+@using (Html.BeginForm("IndexSearch", "Home", FormMethod.Get, new { @class = "d-none d-sm-inline-block form-inline mw-100 navbar-search row", @style = " font-size:12px" }))
+{
+    <div class="row" style="margin:unset;padding-top:5px;margin-left:5px">
+                <div class="col-md-2 style-padding-col">
+                    <a class="btn button" style="background-color: #6e707e;padding: 6px 7px;display: inline-block;border: none;border-radius: 7px;color: white;">
+                        Inquiry Period
+                    </a>
+                </div>
+                <div class="col-md-3 style-padding-col">
+                    <input style="box-sizing: border-box;border: 2px solid #ccc;border-radius: 7px;font-size: 13px;background-color: #3CBC8D;
+                 color: teal;" type="date" name="fromdate" id="today" class="form-control bg-light border-0 small viewport-input" placeholder="08/06/2020" />
+                </div>
+                <div class="col-md-3 style-padding-col">
+                    <input style="box-sizing: border-box;border: 2px solid #ccc;border-radius: 7px;font-size: 13px;background-color: #3CBC8D;
+                 color: teal;" type="date" name="todate" id="todate" class="form-control bg-light border-0 small viewport-input" />
+                </div>
+                <div class="col-md-2 style-padding-col">
+                    <button class="btn btn-primary" type="submit" style="background-color: SeaGreen;padding: 6px 17px;display: inline-block;border: none;border-radius: 7px;">
+                        <i class="fas fa-search"></i> Search
+                    </button>
+                </div>
+                <div class="col-md-2 style-padding-col"></div>
+    </div>
+   
+}
+<script>
+            var isDateSupported = function () {
+                var input = document.createElement('input');
+                input.setAttribute('type', 'date');
+                input.setAttribute('value', 'x');
+                return (input.value !== 'x');
+            };
+
+            // Variables
+            var field = document.querySelector('#today');
+            var fieldtodate = document.querySelector('#todate');
+            var date = new Date();
+            // var datetime = "01";
+
+            // If [type="date"] is supported, update the DOM
+            if (isDateSupported()) {
+
+                // Remove attributes
+                field.removeAttribute('pattern');
+                field.removeAttribute('placeholder');
+
+                fieldtodate.removeAttribute('pattern');
+                fieldtodate.removeAttribute('placeholder');
+
+                // Remove the helper text
+                var helperText = document.querySelector('[for="today"] .description');
+                var helperTexttodate = document.querySelector('[for="todate"] .description');
+
+                if (helperText) {
+                    helperText.parentNode.removeChild(helperText);
+                }
+                if (helperTexttodate) {
+                    helperTexttodate.parentNode.removeChild(helperTexttodate);
+                }
+
+
+            }
+
+            // Set the value
+            field.value = date.getFullYear().toString() + '-' + (date.getMonth() + 1).toString().padStart(2, 0) +
+                '-' + "01";
+            fieldtodate.value = date.getFullYear().toString() + '-' + (date.getMonth() + 1).toString().padStart(2, 0) +
+               '-' + date.getDate().toString().padStart(2, 0);
+</script>
+<div class="card-body" style="margin-left:5px;margin-right:5px">
+    <div class="table-responsive">
+        <table class="table table-bordered">
+            <thead>
+                <tr style="background-color:#f6933efc;">
+                    <th rowspan="2">
+                        Work Date
+                    </th>
+                    <th rowspan="2">
+                        Week
+                    </th>
+                    <th rowspan="2">
+                        Person
+                        Number
+
+                    </th>
+                    <th rowspan="2">
+                        Name
+
+                    </th>
+                    <th rowspan="2">
+                        Work
+                        center
+
+                    </th>
+
+                    <th rowspan="2">
+                        Duty Name
+
+                    </th>
+                    <th rowspan="2">
+                        Holy Name
+                    </th>
+
+                    <th colspan="2">
+                        Work Time
+                    </th>
+                    <th colspan="4">
+                        OT Plan
+                    </th>
+
+                    <th rowspan="2">
+                        Next(Y/N)
+
+                    </th>
+                    <th rowspan="2">
+                        Night(Y/N)
+                    </th>
+
+                </tr>
+                <tr>
+                    <th>Open</th>
+                    <th>Close</th>
+                    <th>Before OT Start</th>
+                    <th>Before OT End</th>
+                    <th>After OT Start</th>
+                    <th>After OT End</th>
+                </tr>
+            </thead>
+            <tbody>
+                @if (Model.StatusList != null)
+                {
+                    foreach (var name in Model.StatusList)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => name.Workdate))
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => name.Week)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => name.Personbumber)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => name.Username)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => name.Workcenter)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => name.Dutyname)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => name.Holyname)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => name.Opentime)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => name.Closetime)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => name.BeforeStart)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => name.BeforeEnd)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => name.AfterStart)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => name.AfterEnd)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => name.Next)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => name.AllNight)
+                            </td>
+                        </tr>
+                    }
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+
+
+<h3 style="color: #990000; font-size: 30px; margin: 0; font-weight: bold; text-transform: uppercase;padding:5px">Monthly Total</h3>
+<div class="card-body" style="margin-left:5px;margin-right:5px">
+    <div class="table-responsive">
+        <table class="table table-bordered">
+            <thead>
+                <tr style="background-color:#f6933efc;">
+                    @*<th rowspan="2">
+                        Total
+
+                    </th>
+                    <th rowspan="2">
+                        Person
+
+                    </th>*@
+                    <th rowspan="2">
+                        Person Num
+
+                    </th>
+                    <th rowspan="2">
+                        Name
+
+                    </th>
+                    <th rowspan="2">
+                        Pay Day
+
+                    </th>
+
+                    <th rowspan="2">
+                        Working Dedction
+
+                    </th>
+                    <th rowspan="2">
+                        Normal Day
+
+                    </th>
+
+                    <th rowspan="2">
+                        Normal Day  2
+
+                    </th>
+                    <th rowspan="2">
+                        Night Time
+
+                    </th>
+                    <th rowspan="2">
+                        Weekly Day
+
+                    </th>
+                    <th rowspan="2">
+                        Weekly Night Day
+
+                    </th>
+
+                    <th rowspan="2">
+                        Pulibh Holiday
+
+                    </th>
+
+                    <th rowspan="2">
+                        Pulibh Night Holiday
+
+                    </th>
+                    <th rowspan="2">
+                        Night Working
+
+                    </th>
+
+
+                </tr>
+
+            </thead>
+            <tbody>
+                @if (Model.TotalList != null)
+                {
+                    foreach (var item in Model.TotalList)
+                    {
+                        <tr>
+                            @*<td>
+                                @Html.DisplayFor(modelItem => item.Total)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.person_id)
+                            </td>*@
+                            <td>
+                                @Html.DisplayFor(modelItem => item.person_number)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.name)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.payday)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.working_ded)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Normalday)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.NormaldayII)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.NightTime)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Weeklyday)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Weeklynightday)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.publicHoliday)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.publicnightHoliday)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Nightworking)
+                            </td>
+
+                        </tr>
+                    }
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+
+
